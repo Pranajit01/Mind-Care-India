@@ -13,19 +13,16 @@ import {
   Zap,
   Lock,
   MessageSquare,
-  Activity
+  Activity,
+  Terminal,
+  Sparkles,
+  ChevronRight,
+  Globe,
+  Radio
 } from 'lucide-react';
-import { StatCard } from '@/components/StatCard';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 export default function Landing() {
-  const impactData = [
-    { year: 'Year 1', users: 100, revenue: 0.5 },
-    { year: 'Year 2', users: 1000, revenue: 5 },
-    { year: 'Year 3', users: 10000, revenue: 50 },
-    { year: 'Year 5', users: 100000, revenue: 500 },
-  ];
-
   const treatmentGapData = [
     { condition: 'Depression', gap: 83 },
     { condition: 'Schizophrenia', gap: 86 },
@@ -33,530 +30,374 @@ export default function Landing() {
     { condition: 'Bipolar', gap: 82 },
   ];
 
+  const tickerItems = [
+    { label: 'AFFECTED CITIZENS', value: '197M+' },
+    { label: 'DEPRESSION TREATMENT GAP', value: '83%' },
+    { label: 'INDIC LANGUAGES SUPPORTED', value: '10+' },
+    { label: 'GEMMA INFERENCE LATENCY', value: '<100ms' },
+    { label: 'ON-DEVICE PRIVACY GUARANTEE', value: '100%' },
+    { label: 'PSYCHIATRISTS PER 100K', value: '0.75' },
+    { label: 'CRISIS TRIAGE ROUTING', value: '24/7' },
+  ];
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#030303] text-foreground selection:bg-purple-500/30 selection:text-purple-200 overflow-x-hidden">
+      
+      {/* Floating Glass Navigation Pill */}
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[92%] max-w-2xl z-50 rounded-full glass-pill p-2 px-4 sm:px-6 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-cyan-400 flex items-center justify-center p-0.5 shadow-[0_0_15px_rgba(139,92,246,0.6)]">
+            <div className="w-full h-full bg-[#0a0a0a] rounded-full flex items-center justify-center">
+              <Brain className="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform" />
+            </div>
+          </div>
+          <span className="font-serif-editorial text-xl text-white tracking-wide">
+            Mann Saathi
+          </span>
+        </Link>
+
+        <div className="hidden md:flex items-center gap-6 text-xs uppercase tracking-wider font-semibold text-neutral-400">
+          <Link href="/demo" className="hover:text-purple-400 transition-colors">Demo</Link>
+          <Link href="/blueprint" className="hover:text-purple-400 transition-colors">Blueprint</Link>
+          <Link href="/architecture" className="hover:text-purple-400 transition-colors">Architecture</Link>
+          <Link href="/personas" className="hover:text-purple-400 transition-colors">Personas</Link>
+        </div>
+
+        {/* Shiny CTA Button */}
+        <Link href="/demo" className="relative group inline-flex items-center justify-center p-[1px] rounded-full overflow-hidden">
+          <span className="absolute inset-0 bg-[conic-gradient(from_0deg,#transparent_0%,#8b5cf6_40%,#06b6d4_50%,#transparent_60%)] animate-spin-conic group-hover:opacity-100 transition-opacity" />
+          <span className="relative px-4 py-1.5 rounded-full bg-[#0a0a0a] text-xs font-semibold text-white group-hover:bg-purple-950/40 transition-colors flex items-center gap-1.5">
+            Launch AI
+            <ArrowRight className="w-3.5 h-3.5 text-purple-400 group-hover:translate-x-0.5 transition-transform" />
+          </span>
+        </Link>
+      </nav>
+
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-accent/5 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(13,115,119,0.1),transparent_50%),radial-gradient(circle_at_70%_60%,rgba(244,162,97,0.08),transparent_50%)]" />
+      <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8">
-              <Zap className="w-4 h-4" />
-              Powered by Google Gemma • 100% Offline • Privacy-First
-            </div>
+        {/* Floating Ambient Orbs */}
+        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/25 blur-[140px] rounded-full pointer-events-none animate-float-orb" />
+        <div className="absolute top-[300px] left-[-100px] w-[450px] h-[450px] bg-cyan-500/15 blur-[130px] rounded-full pointer-events-none animate-float-orb" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-[200px] right-[-100px] w-[400px] h-[400px] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none animate-float-orb" style={{ animationDelay: '5s' }} />
+
+        <div className="relative max-w-5xl mx-auto text-center z-10">
+          
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-950/30 text-purple-300 text-xs font-medium backdrop-blur-md mb-8 shadow-[0_0_20px_rgba(139,92,246,0.2)]">
+            <span className="w-2 h-2 rounded-full bg-purple-400 animate-ping" />
+            <span>Google Gemma Model Engine • 100% On-Device Privacy</span>
+          </div>
+
+          {/* Hero Heading */}
+          <h1 className="font-serif-editorial text-6xl sm:text-7xl lg:text-8xl text-white leading-[0.95] tracking-tight mb-8">
+            Empathetic Mental Care
+            <br />
+            for <span className="animate-text-shimmer italic font-normal">1.4 Billion Citizens</span>
+          </h1>
+
+          {/* Subtext */}
+          <p className="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed mb-12 font-sans">
+            An offline-first, multilingual AI companion engineered specifically for India's socio-cultural healthcare ecosystem. High-fidelity supportive care, 24/7 crisis triage, and CBT tools across 10+ Indic languages.
+          </p>
+
+          {/* Hero Action Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-16">
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-foreground mb-6 leading-tight">
-              Mental Healthcare for
-              <br />
-              <span className="text-primary">1.4 Billion Indians</span>
-            </h1>
-            
-            <p className="text-xl sm:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-              An offline AI mental health companion designed to bridge India's massive treatment gap.
-              Works entirely on your phone, speaks your language, never judges.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-              <Link
-                href="/demo"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-lg"
-              >
-                Try the Demo
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="/blueprint"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-card border-2 border-border text-foreground rounded-lg font-semibold hover:border-primary transition-colors"
-              >
-                Read the Blueprint
-              </Link>
-            </div>
+            {/* Primary Shiny Border Button */}
+            <Link href="/demo" className="relative group inline-flex items-center justify-center p-[1px] rounded-full overflow-hidden shadow-[0_0_30px_-5px_rgba(139,92,246,0.5)]">
+              <span className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0%,#8b5cf6_40%,#06b6d4_50%,transparent_60%)] animate-spin-conic" />
+              <span className="relative px-8 py-3.5 rounded-full bg-[#0a0a0a] text-sm font-semibold text-white group-hover:bg-[#120e24] transition-colors flex items-center gap-2">
+                <span>Start Session with Mann Saathi</span>
+                <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
 
-            {/* Live Statistics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              <div className="bg-card/50 backdrop-blur border border-card-border rounded-lg p-6">
-                <div className="text-4xl font-display font-bold text-primary mb-2">197M</div>
-                <div className="text-sm text-muted-foreground">Indians with mental health disorders</div>
-              </div>
-              <div className="bg-card/50 backdrop-blur border border-card-border rounded-lg p-6">
-                <div className="text-4xl font-display font-bold text-destructive mb-2">83%</div>
-                <div className="text-sm text-muted-foreground">Treatment gap for depression</div>
-              </div>
-              <div className="bg-card/50 backdrop-blur border border-card-border rounded-lg p-6">
-                <div className="text-4xl font-display font-bold text-accent mb-2">0.75</div>
-                <div className="text-sm text-muted-foreground">Psychiatrists per 100K people</div>
-              </div>
-              <div className="bg-card/50 backdrop-blur border border-card-border rounded-lg p-6">
-                <div className="text-4xl font-display font-bold text-primary mb-2">9,000</div>
-                <div className="text-sm text-muted-foreground">Total psychiatrists for 1.4B people</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            {/* Secondary Glass Button */}
+            <Link href="/blueprint" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full glass-card text-sm font-semibold text-neutral-300 hover:text-white border border-white/10 hover:border-white/20 transition-all">
+              <span>View Technical Blueprint</span>
+              <ChevronRight className="w-4 h-4 text-neutral-500" />
+            </Link>
 
-      {/* Problem Statement */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-display font-bold text-foreground mb-4">
-              The Crisis We're Solving
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              India faces a mental healthcare emergency that affects millions of lives every single day
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <StatCard
-              icon={Users}
-              value={197}
-              suffix="M"
-              label="People Suffering"
-              description="Mental health disorders (Lancet 2020)"
-              delay={0}
-            />
-            <StatCard
-              icon={TrendingDown}
-              value={83}
-              suffix="%"
-              label="Treatment Gap"
-              description="For depression (WHO 2019)"
-              delay={100}
-            />
-            <StatCard
-              icon={AlertTriangle}
-              value={1.7}
-              suffix="T"
-              label="Annual Cost"
-              description="₹1.7 trillion economic burden"
-              delay={200}
-            />
-          </div>
-
-          <div className="bg-card border border-card-border rounded-xl p-8">
-            <h3 className="text-2xl font-display font-bold text-foreground mb-6">Treatment Gap by Condition</h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={treatmentGapData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                <XAxis dataKey="condition" stroke="hsl(var(--muted-foreground))" />
-                <YAxis stroke="hsl(var(--muted-foreground))" />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: 'hsl(var(--card))',
-                    border: '1px solid hsl(var(--border))',
-                    borderRadius: '8px',
-                  }}
-                />
-                <Bar dataKey="gap" fill="hsl(var(--destructive))" radius={[8, 8, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-            <p className="text-sm text-muted-foreground mt-4 text-center">
-              Over 80% of Indians with mental health conditions receive no treatment
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Barriers */}
-      <section className="py-24 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-display font-bold text-foreground mb-4">
-              Why People Don't Get Help
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              The barriers preventing 197 million Indians from accessing mental healthcare
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* High-Contrast Quick Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
             {[
-              {
-                title: 'Stigma',
-                stat: '71%',
-                description: 'Avoid seeking help due to social stigma and fear of judgment',
-                icon: Shield,
-              },
-              {
-                title: 'Cost',
-                stat: '₹800-2,500',
-                description: 'Average consultation cost, unaffordable for most Indians',
-                icon: AlertTriangle,
-              },
-              {
-                title: 'Availability',
-                stat: '80km',
-                description: 'Average travel distance to nearest psychiatrist in rural India',
-                icon: TrendingDown,
-              },
-              {
-                title: 'Language',
-                stat: '1,652',
-                description: 'Dialects spoken, but most tools only available in English',
-                icon: Languages,
-              },
-              {
-                title: 'Internet',
-                stat: '45%',
-                description: 'Rural population with poor or no internet connectivity',
-                icon: Smartphone,
-              },
-              {
-                title: 'Wait Times',
-                stat: '6-12 months',
-                description: 'Wait time for government hospital appointments',
-                icon: AlertTriangle,
-              },
-            ].map((barrier, i) => (
-              <div
-                key={barrier.title}
-                className="animate-slide-in-stagger bg-card border border-card-border rounded-xl p-6"
-                style={{ animationDelay: `${i * 100}ms` }}
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 rounded-lg bg-destructive/10">
-                    <barrier.icon className="w-6 h-6 text-destructive" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-bold text-2xl text-foreground mb-1">{barrier.stat}</h3>
-                    <h4 className="font-semibold text-foreground">{barrier.title}</h4>
-                  </div>
+              { title: '197 Million', subtitle: 'Affected Citizens in India', accent: 'text-purple-400', border: 'hover:border-purple-500/40' },
+              { title: '83% Gap', subtitle: 'Untreated Depression Rate', accent: 'text-cyan-400', border: 'hover:border-cyan-500/40' },
+              { title: '0.75 per 100k', subtitle: 'Psychiatrists Density', accent: 'text-emerald-400', border: 'hover:border-emerald-500/40' },
+              { title: '10+ Indic', subtitle: 'Native Languages & Dialects', accent: 'text-purple-300', border: 'hover:border-purple-500/40' }
+            ].map((stat, idx) => (
+              <div key={idx} className={`glass-card p-6 rounded-2xl ${stat.border}`}>
+                <div className={`font-serif-editorial text-3xl sm:text-4xl font-normal ${stat.accent} mb-1`}>
+                  {stat.title}
                 </div>
-                <p className="text-sm text-muted-foreground">{barrier.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Solution: Mann Saathi */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-display font-bold text-foreground mb-4">
-              How Mann Saathi Solves This
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              A comprehensive AI companion designed specifically for India's unique challenges
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            {[
-              {
-                icon: Smartphone,
-                title: '100% Offline',
-                description: 'Works entirely on-device using Gemma 2B. No internet required. Your conversations never leave your phone.',
-                features: ['1.2GB RAM footprint', '100ms response time', 'Runs on Snapdragon 665+'],
-              },
-              {
-                icon: Languages,
-                title: '10+ Indian Languages',
-                description: 'Native support for Hindi, Tamil, Telugu, Bengali, Marathi, and more. Voice and text in your language.',
-                features: ['Voice input with Whisper ASR', 'Natural conversation flow', 'Cultural context awareness'],
-              },
-              {
-                icon: Lock,
-                title: 'Privacy-First',
-                description: 'Zero-knowledge architecture. Your data stays on your device. No cloud, no tracking, no judgment.',
-                features: ['AES-256 encryption at rest', 'DPDP Act 2023 compliant', 'Optional anonymized analytics'],
-              },
-              {
-                icon: Heart,
-                title: 'Clinically Safe',
-                description: 'PHQ-9 and GAD-7 screening built-in. Real-time crisis detection with safe escalation to human support.',
-                features: ['Conservative crisis thresholds', 'Tele-MANAS integration', 'Never diagnoses or prescribes'],
-              },
-            ].map((feature, i) => (
-              <div
-                key={feature.title}
-                className="animate-slide-in-stagger bg-card border-2 border-primary/20 rounded-xl p-8"
-                style={{ animationDelay: `${i * 100}ms` }}
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-4 rounded-xl bg-primary/10">
-                    <feature.icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-display font-bold text-2xl text-foreground mb-2">{feature.title}</h3>
-                    <p className="text-muted-foreground mb-4">{feature.description}</p>
-                    <ul className="space-y-2">
-                      {feature.features.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-sm text-foreground">
-                          <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className="text-xs text-neutral-400 font-mono tracking-wide uppercase">
+                  {stat.subtitle}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="bg-gradient-to-br from-primary/10 via-background to-accent/10 border border-primary/20 rounded-2xl p-8 lg:p-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-3xl font-display font-bold text-foreground mb-4">
-                  See Mann Saathi in Action
-                </h3>
-                <p className="text-lg text-muted-foreground mb-6">
-                  Experience how our AI companion provides empathetic support, screens for mental health conditions,
-                  and safely escalates crisis situations — all while working completely offline.
-                </p>
-                <Link
-                  href="/demo"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity"
-                >
-                  Try Interactive Demo
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </div>
-              <div className="bg-card border border-card-border rounded-xl p-6">
-                <div className="space-y-4">
-                  <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <MessageSquare className="w-4 h-4 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="bg-primary/10 rounded-lg p-3">
-                        <p className="text-sm text-foreground">
-                          Namaste. Main Mann Saathi hoon. Aap kaise hain aaj? Kya aap mujhse kuch share karna chahenge?
-                        </p>
-                      </div>
-                      <p className="text-xs text-muted-foreground mt-1">Mann Saathi</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3 flex-row-reverse">
-                    <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                      <Users className="w-4 h-4 text-accent" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="bg-accent/10 rounded-lg p-3">
-                        <p className="text-sm text-foreground">
-                          Bahut stress hai. Exam aa raha hai aur kuch samajh nahi aa raha.
-                        </p>
-                      </div>
-                      <p className="text-xs text-muted-foreground mt-1 text-right">You</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <MessageSquare className="w-4 h-4 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="bg-primary/10 rounded-lg p-3">
-                        <p className="text-sm text-foreground">
-                          Main samajh sakta hoon. Exam stress bahut overwhelming ho sakta hai. Kya aap mujhe thoda aur batayenge ki aap kaisa feel kar rahe hain?
-                        </p>
-                      </div>
-                      <p className="text-xs text-muted-foreground mt-1">Mann Saathi</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Impact Projections */}
-      <section className="py-24 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-display font-bold text-foreground mb-4">
-              Projected Impact
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our roadmap to reaching 100 million Indians with accessible mental healthcare
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-card border border-card-border rounded-xl p-8">
-              <h3 className="text-2xl font-display font-bold text-foreground mb-6">User Growth Trajectory</h3>
-              <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={impactData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis dataKey="year" stroke="hsl(var(--muted-foreground))" />
-                  <YAxis stroke="hsl(var(--muted-foreground))" />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: 'hsl(var(--card))',
-                      border: '1px solid hsl(var(--border))',
-                      borderRadius: '8px',
-                    }}
-                  />
-                  <Line type="monotone" dataKey="users" stroke="hsl(var(--primary))" strokeWidth={3} />
-                </LineChart>
-              </ResponsiveContainer>
-              <p className="text-sm text-muted-foreground mt-4">Users in thousands (K)</p>
+      {/* Infinite Horizontal Metrics Ticker */}
+      <section className="relative h-16 bg-[#000000]/70 border-y border-white/10 overflow-hidden flex items-center z-20">
+        <div className="animate-infinite-ticker flex gap-12 whitespace-nowrap items-center">
+          {[...tickerItems, ...tickerItems].map((item, index) => (
+            <div key={index} className="inline-flex items-center gap-3">
+              <span className="text-xs font-mono tracking-widest text-neutral-500 uppercase">{item.label}:</span>
+              <span className="text-sm font-mono font-semibold text-white bg-purple-950/40 px-2 py-0.5 rounded border border-purple-500/20">{item.value}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-500/40 ml-6" />
             </div>
+          ))}
+        </div>
+      </section>
 
-            <div className="bg-card border border-card-border rounded-xl p-8">
-              <h3 className="text-2xl font-display font-bold text-foreground mb-6">Revenue Growth (₹ Crore)</h3>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={impactData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis dataKey="year" stroke="hsl(var(--muted-foreground))" />
-                  <YAxis stroke="hsl(var(--muted-foreground))" />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: 'hsl(var(--card))',
-                      border: '1px solid hsl(var(--border))',
-                      borderRadius: '8px',
-                    }}
+      {/* Problem & Treatment Gap Analysis Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="font-serif-editorial text-4xl sm:text-5xl text-white mb-4">
+            India's Mental Healthcare Crisis
+          </h2>
+          <p className="text-neutral-400 text-lg">
+            Structural scarcity, language isolation, and acute social stigma prevent 8 out of 10 individuals from accessing professional psychiatric intervention.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-16">
+          <div className="glass-card p-8 rounded-3xl">
+            <h3 className="font-serif-editorial text-2xl text-white mb-6 flex items-center gap-3">
+              <TrendingDown className="w-6 h-6 text-purple-400" />
+              Treatment Gap by Mental Health Condition
+            </h3>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={treatmentGapData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                  <XAxis dataKey="condition" stroke="#737373" fontSize={12} />
+                  <YAxis stroke="#737373" fontSize={12} unit="%" />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: '#0a0a0a', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
+                    labelStyle={{ color: '#ffffff' }}
                   />
-                  <Bar dataKey="revenue" fill="hsl(var(--accent))" radius={[8, 8, 0, 0]} />
+                  <Bar dataKey="gap" fill="#8b5cf6" radius={[6, 6, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
-              <p className="text-sm text-muted-foreground mt-4">B2G + B2B + CSR revenue streams</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            <div className="bg-card border border-card-border rounded-xl p-6 text-center">
-              <div className="text-4xl font-display font-bold text-primary mb-2">10M+</div>
-              <div className="text-sm font-medium text-foreground mb-1">Year 3 Users</div>
-              <div className="text-xs text-muted-foreground">Across 10+ Indian languages</div>
-            </div>
-            <div className="bg-card border border-card-border rounded-xl p-6 text-center">
-              <div className="text-4xl font-display font-bold text-accent mb-2">50,000</div>
-              <div className="text-sm font-medium text-foreground mb-1">Crisis Interventions</div>
-              <div className="text-xs text-muted-foreground">Lives potentially saved by Year 3</div>
-            </div>
-            <div className="bg-card border border-card-border rounded-xl p-6 text-center">
-              <div className="text-4xl font-display font-bold text-primary mb-2">₹170 Cr</div>
-              <div className="text-sm font-medium text-foreground mb-1">Healthcare Savings</div>
-              <div className="text-xs text-muted-foreground">Prevented emergency costs</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Crisis Protocol */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-display font-bold text-foreground mb-4">
-              Crisis Detection & Safe Escalation
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Multi-layered safety system ensures no one in distress is left alone
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+          <div className="space-y-6">
             {[
-              { level: 'Level 0', label: 'Safe', color: 'bg-green-500/10 border-green-500/30', textColor: 'text-green-600', action: 'Routine conversation' },
-              { level: 'Level 1', label: 'Monitor', color: 'bg-blue-500/10 border-blue-500/30', textColor: 'text-blue-600', action: 'Enhanced empathy mode' },
-              { level: 'Level 2', label: 'Concern', color: 'bg-yellow-500/10 border-yellow-500/30', textColor: 'text-yellow-600', action: 'Increase check-in frequency' },
-              { level: 'Level 3', label: 'Alert', color: 'bg-orange-500/10 border-orange-500/30', textColor: 'text-orange-600', action: 'Tele-MANAS referral prompt' },
-              { level: 'Level 4', label: 'Crisis', color: 'bg-red-500/10 border-red-500/30', textColor: 'text-red-600', action: 'Emergency protocol activated' },
-            ].map((stage, i) => (
-              <div key={stage.level} className={`${stage.color} border-2 rounded-xl p-6 text-center`}>
-                <Activity className={`w-8 h-8 ${stage.textColor} mx-auto mb-3`} />
-                <div className={`font-display font-bold text-lg ${stage.textColor} mb-1`}>{stage.level}</div>
-                <div className="text-sm font-semibold text-foreground mb-2">{stage.label}</div>
-                <div className="text-xs text-muted-foreground">{stage.action}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 bg-card border border-card-border rounded-xl p-8">
-            <h3 className="text-xl font-display font-bold text-foreground mb-6">Crisis Response Protocol</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                  <span className="font-display font-bold text-primary">1</span>
+              {
+                icon: Users,
+                title: 'Severe Professional Shortage',
+                desc: 'India has fewer than 9,000 psychiatrists for 1.4 billion people. Rural districts often have zero access to mental health practitioners.',
+                accent: 'text-purple-400'
+              },
+              {
+                icon: Languages,
+                title: 'Linguistic Exclusion',
+                desc: 'Most traditional therapy tools are built exclusively in English, leaving over 90% of the population without accessible care in native Indic languages.',
+                accent: 'text-cyan-400'
+              },
+              {
+                icon: Shield,
+                title: 'Social Stigma & Privacy Risks',
+                desc: 'Fear of social judgment causes users to avoid clinics. Mind Care India ensures 100% on-device processing so personal feelings never leak.',
+                accent: 'text-emerald-400'
+              }
+            ].map((problem, i) => (
+              <div key={i} className="glass-card p-6 rounded-2xl flex items-start gap-4">
+                <div className="p-3 rounded-xl bg-white/5 border border-white/10 shrink-0">
+                  <problem.icon className={`w-6 h-6 ${problem.accent}`} />
                 </div>
-                <h4 className="font-semibold text-foreground mb-2">Real-Time Detection</h4>
-                <p className="text-sm text-muted-foreground">
-                  DistilBERT safety classifier analyzes every message for crisis signals
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-3">
-                  <span className="font-display font-bold text-accent">2</span>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-1">{problem.title}</h4>
+                  <p className="text-sm text-neutral-400 leading-relaxed">{problem.desc}</p>
                 </div>
-                <h4 className="font-semibold text-foreground mb-2">Immediate Response</h4>
-                <p className="text-sm text-muted-foreground">
-                  Never leaves user alone. Validates, provides grounding techniques, stays present
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                  <span className="font-display font-bold text-primary">3</span>
-                </div>
-                <h4 className="font-semibold text-foreground mb-2">Human Handoff</h4>
-                <p className="text-sm text-muted-foreground">
-                  One-touch connection to Tele-MANAS (14416), iCall (9152987821), or Emergency (112)
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Partners */}
-      <section className="py-24 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-display font-bold text-foreground mb-4">
-              Integrated with Government Infrastructure
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Building on existing mental health initiatives, not replacing them
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { name: 'NIMHANS', role: 'Clinical validation partner' },
-              { name: 'Tele-MANAS', role: 'Crisis referral integration' },
-              { name: 'iCall', role: 'Emergency support partner' },
-              { name: 'ASHA Workers', role: 'Community distribution' },
-            ].map((partner) => (
-              <div key={partner.name} className="bg-card border border-card-border rounded-xl p-6 text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                  <Brain className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-display font-bold text-foreground mb-1">{partner.name}</h3>
-                <p className="text-xs text-muted-foreground">{partner.role}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-primary via-primary/90 to-accent/80">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-display font-bold text-white mb-6">
-            Join Us in Bridging India's Mental Health Gap
+      {/* Feature Grid (Synapse 3-Column Glass Grid) */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-widest mb-4">
+            System Modules
+          </div>
+          <h2 className="font-serif-editorial text-4xl sm:text-5xl text-white mb-4">
+            Architected for High Impact & Safety
           </h2>
-          <p className="text-xl text-white/90 mb-12">
-            Built for Google Solution Challenge 2024. Powered by Gemma. Designed for India.
+          <p className="text-neutral-400 text-lg">
+            Engineered around Google Gemma's compact model footprint to deliver private, real-time supportive therapy and emergency triage.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/demo"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-white/90 transition-colors shadow-lg"
-            >
-              Try the Demo
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/pitch"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors"
-            >
-              View Investor Pitch
-            </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              icon: Brain,
+              title: 'Google Gemma Model Engine',
+              desc: 'Fine-tuned on Indic conversational corpora. Executes locally via INT4 quantization with sub-100ms response latency.',
+              color: 'text-purple-400'
+            },
+            {
+              icon: Languages,
+              title: 'Native Indic Multilingual',
+              desc: 'Natively understands Hindi, Bengali, Tamil, Telugu, Marathi, Gujarati, Kannada, Punjabi, and Hinglish code-switching.',
+              color: 'text-cyan-400'
+            },
+            {
+              icon: AlertTriangle,
+              title: '4-Tier Emergency Triage',
+              desc: 'Distress detection algorithms automatically escalate high-risk signals to Tele-MANAS (14416) and NIMHANS emergency helplines.',
+              color: 'text-emerald-400'
+            },
+            {
+              icon: Lock,
+              title: 'Zero-Knowledge Privacy',
+              desc: 'Encrypted local SQLite database and ChromaDB vector embeddings keep all conversation history strictly on-device.',
+              color: 'text-purple-400'
+            },
+            {
+              icon: Activity,
+              title: 'CBT Grounding & Breathwork',
+              desc: 'Embedded interactive toolkits including 4-7-8 breathing animations, PHQ-9 mood tracking, and sensory grounding.',
+              color: 'text-cyan-400'
+            },
+            {
+              icon: Users,
+              title: 'ASHA Worker Portal',
+              desc: 'Equips grassroots healthcare workers with voice-guided screening tools to assist rural populations effectively.',
+              color: 'text-emerald-400'
+            }
+          ].map((feature, idx) => (
+            <div key={idx} className="glass-card p-8 rounded-3xl group">
+              <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-purple-500/50 transition-all">
+                <feature.icon className={`w-6 h-6 ${feature.color}`} />
+              </div>
+              <h3 className="font-serif-editorial text-2xl text-white mb-3">{feature.title}</h3>
+              <p className="text-sm text-neutral-400 leading-relaxed">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Code & IDE System Integration Block */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <h2 className="font-serif-editorial text-4xl text-white mb-3">On-Device Triage Pipeline</h2>
+          <p className="text-neutral-400 text-sm font-sans">
+            Minimal runtime overhead. Sub-100ms response execution with zero external cloud dependencies.
+          </p>
+        </div>
+
+        <div className="bg-[#080808]/90 border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+          {/* IDE Window Controls Bar */}
+          <div className="px-4 py-3 bg-[#0d0d0d] border-b border-white/10 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500/80" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+              <div className="w-3 h-3 rounded-full bg-green-500/80" />
+              <span className="text-xs font-mono text-neutral-500 ml-2">gemma_indic_triage.ts</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs font-mono text-neutral-500">
+              <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+              <span>Gemma LiteRT INT4</span>
+            </div>
+          </div>
+
+          {/* Syntax Highlighted Code Window */}
+          <div className="p-6 font-mono text-xs sm:text-sm text-neutral-300 leading-relaxed overflow-x-auto">
+            <pre>
+              <code>
+                <span className="text-purple-400">import</span> &#123; <span className="text-cyan-300">GemmaLiteRTEngine</span>, <span className="text-cyan-300">IndicBERTClassifier</span> &#125; <span className="text-purple-400">from</span> <span className="text-emerald-400">'@google/gemma-litert'</span>;<br /><br />
+                <span className="text-neutral-500">// Initialize zero-knowledge on-device pipeline</span><br />
+                <span className="text-purple-400">const</span> <span className="text-cyan-300">gemmaEngine</span> = <span className="text-purple-400">new</span> <span className="text-cyan-300">GemmaLiteRTEngine</span>(&#123;<br />
+                &nbsp;&nbsp;modelPath: <span className="text-emerald-400">'models/gemma-2b-indic-int4.bin'</span>,<br />
+                &nbsp;&nbsp;quantization: <span className="text-emerald-400">'INT4'</span>,<br />
+                &nbsp;&nbsp;maxMemoryMB: <span className="text-orange-400">1200</span><br />
+                &#125;);<br /><br />
+                <span className="text-purple-400">export async function</span> <span className="text-cyan-300">processIndicMessage</span>(userMessage: <span className="text-purple-400">string</span>) &#123;<br />
+                &nbsp;&nbsp;<span className="text-purple-400">const</span> distressLevel = <span className="text-purple-400">await</span> IndicBERTClassifier.evaluateDistress(userMessage);<br /><br />
+                &nbsp;&nbsp;<span className="text-purple-400">if</span> (distressLevel &gt;= <span className="text-orange-400">3</span>) &#123;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-purple-400">return</span> EmergencyTriageRouter.triggerHelplineReferral(&#123;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;helpline: <span className="text-emerald-400">'Tele-MANAS (14416)'</span>,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action: <span className="text-emerald-400">'IMMEDIATE_ESCALATION'</span><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&#125;);<br />
+                &nbsp;&nbsp;&#125;<br /><br />
+                &nbsp;&nbsp;<span className="text-purple-400">return await</span> gemmaEngine.generateSupportiveResponse(&#123;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;prompt: userMessage,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;safetyGuardrails: <span className="text-emerald-400">'WHO_MHGAP_STRICT'</span><br />
+                &nbsp;&nbsp;&#125;);<br />
+                &#125;
+              </code>
+            </pre>
           </div>
         </div>
       </section>
+
+      {/* Footer (Synapse Dark Editorial Footer) */}
+      <footer className="bg-[#050505] border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          
+          <div className="space-y-4 md:col-span-1">
+            <Link href="/" className="font-serif-editorial text-3xl text-white block">
+              Mann Saathi
+            </Link>
+            <p className="text-xs text-neutral-400 leading-relaxed font-sans">
+              Democratizing accessible, privacy-first mental healthcare across India using Google's Gemma open model series.
+            </p>
+          </div>
+
+          <div>
+            <h5 className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 mb-4">PLATFORM</h5>
+            <ul className="space-y-2.5 text-xs text-neutral-400 font-sans">
+              <li><Link href="/demo" className="hover:text-white transition-colors">AI Companion Demo</Link></li>
+              <li><Link href="/blueprint" className="hover:text-white transition-colors">Technical Blueprint</Link></li>
+              <li><Link href="/architecture" className="hover:text-white transition-colors">On-Device Architecture</Link></li>
+              <li><Link href="/personas" className="hover:text-white transition-colors">Target Personas</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 mb-4">CRISIS HELPLINES</h5>
+            <ul className="space-y-2.5 text-xs text-neutral-400 font-sans">
+              <li className="text-purple-400">Tele-MANAS: 14416 / 1800-891</li>
+              <li className="text-cyan-400">Vandrevala Foundation: +91 9999 666 555</li>
+              <li className="text-emerald-400">NIMHANS Helpline: 080-26995000</li>
+              <li className="text-neutral-400">KIRAN: 1800-599-0019</li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 mb-4">SYSTEM STATUS</h5>
+            <div className="glass-card p-4 rounded-xl space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-xs font-semibold text-white">All Systems Operational</span>
+              </div>
+              <p className="text-[11px] text-neutral-500">Google Gemma Model Engine running with 100% privacy & sub-100ms latency.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 font-sans gap-4">
+          <div>© {new Date().getFullYear()} Mind Care India (Mann Saathi). Open Source Apache 2.0.</div>
+          <div className="flex items-center gap-6">
+            <span>Privacy First</span>
+            <span>Zero Data Leakage</span>
+            <span>Google Gemma Powered</span>
+          </div>
+        </div>
+      </footer>
+
     </div>
   );
 }
