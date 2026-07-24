@@ -514,10 +514,67 @@
   box-shadow: 0 0 30px -10px rgba(0, 82, 204, 0.5), 0 0 15px -5px rgba(255, 69, 0, 0.3);
 }
 
-.icon-hover-rotate {
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+/* LIGHT MODE THEME OVERRIDES (WHITE THEME) */
+html.light,
+html.light body {
+  background-color: #F8F9FA !important;
+  color: #1E1E1E !important;
 }
 
-.glass-card:hover .icon-hover-rotate {
-  transform: scale(1.15) rotate(6deg);
+html.light .bg-\[\#050505\] {
+  background-color: #F8F9FA !important;
+}
+
+html.light .text-white {
+  color: #0F172A !important;
+}
+
+html.light .text-neutral-400 {
+  color: #475569 !important;
+}
+
+html.light .text-neutral-300 {
+  color: #334155 !important;
+}
+
+html.light .glass-pill {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.12);
+}
+
+html.light .glass-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+html.light .glass-card:hover {
+  border-color: rgba(0, 102, 255, 0.4);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+}
+
+html.light .bg-\[\#1E1E1E\] {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+
+html.light .bg-\[\#111111\] {
+  background-color: #FFFFFF !important;
+}
+
+html.light .bg-\[\#080808\]\/90 {
+  background-color: #F8FAFC !important;
+}
+
+html.light .bg-\[\#0d0d0d\] {
+  background-color: #E2E8F0 !important;
+}
+
+html.light .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .border-white\/20 {
+  border-color: rgba(0, 0, 0, 0.12) !important;
 }

@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'wouter';
 import { Brain, ArrowRight, Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export function Navigation() {
   const [location] = useLocation();
@@ -44,12 +45,16 @@ export function Navigation() {
         ))}
       </div>
 
-      {/* Right Side Action Button - Directional Fill */}
-      <div className="hidden sm:flex items-center gap-3">
-        <Link href="/demo" className="btn-directional-fill px-4 py-1.5 text-[11px] rounded-none flex items-center gap-1.5">
-          <span>Launch AI</span>
-          <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
+      {/* Right Side Action Buttons */}
+      <div className="flex items-center gap-2 sm:gap-3">
+        <ThemeToggle />
+
+        <div className="hidden sm:block">
+          <Link href="/demo" className="btn-directional-fill px-4 py-1.5 text-[11px] rounded-none flex items-center gap-1.5">
+            <span>Launch AI</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
       </div>
 
       {/* Mobile menu trigger */}
