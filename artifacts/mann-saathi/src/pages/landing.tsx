@@ -326,7 +326,7 @@ export default function Landing() {
             }
           ].map((feature, idx) => (
             <div key={idx} className="glass-card p-8 rounded-3xl group">
-              <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-purple-500/50 transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-purple-500/50 transition-all icon-hover-rotate">
                 <feature.icon className={`w-6 h-6 ${feature.color}`} />
               </div>
               <h3 className="font-serif-editorial text-2xl text-white mb-3">{feature.title}</h3>

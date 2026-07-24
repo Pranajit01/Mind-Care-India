@@ -361,6 +361,21 @@
   letter-spacing: -0.03em;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
 .glass-pill {
   background: rgba(10, 10, 10, 0.75);
   backdrop-filter: blur(16px);
@@ -373,13 +388,22 @@
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .glass-card:hover {
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(139, 92, 246, 0.4);
-  transform: translateY(-8px);
-  box-shadow: 0 0 30px -10px rgba(139, 92, 246, 0.35);
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px -10px rgba(139, 92, 246, 0.4);
+}
+
+.icon-hover-rotate {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.glass-card:hover .icon-hover-rotate {
+  transform: scale(1.1) rotate(6deg);
 }
