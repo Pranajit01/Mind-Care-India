@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npx pnpm --filter @workspace/mann-saathi run build",
-  "outputDirectory": "artifacts/mann-saathi/dist/public",
+  "buildCommand": "pnpm --filter @workspace/mann-saathi run build",
+  "outputDirectory": "artifacts/mann-saathi/dist",
   "rewrites": [
     {
       "source": "/(.*)",
