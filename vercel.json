@@ -1,6 +1,7 @@
 {
   "buildCommand": "pnpm --filter @workspace/mann-saathi run build",
   "outputDirectory": "artifacts/mann-saathi/dist",
+  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/(.*)",
