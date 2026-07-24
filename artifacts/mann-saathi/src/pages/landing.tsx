@@ -60,29 +60,30 @@ export default function Landing() {
       {/* 5% Opacity Global Grain Overlay */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.05] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] mix-blend-overlay" />
 
-      {/* Hero Section - Typographic Poster Drama + WebGL LightRays */}
-      <section className="relative min-h-[96vh] flex flex-col justify-between pt-32 pb-20 px-4 sm:px-8 lg:px-12 overflow-hidden border-b border-white/10">
+      {/* Hero Section - Typographic Drama + WebGL LightRays */}
+      <section className="relative min-h-[90vh] flex flex-col justify-between pt-24 pb-10 px-4 sm:px-8 lg:px-12 overflow-hidden border-b border-white/10">
         
-        {/* WebGL LightRays Effect */}
+        {/* Interactive WebGL LightRays Background - Bright Electric Blue */}
         <LightRays
           raysOrigin="top-center"
-          raysColor="#0052cc"
-          raysSpeed={1.5}
-          lightSpread={1.2}
-          rayLength={1.8}
+          raysColor="#0066ff"
+          raysSpeed={2.0}
+          lightSpread={1.6}
+          rayLength={2.2}
           followMouse={true}
-          mouseInfluence={0.35}
-          noiseAmount={0.03}
-          distortion={0.08}
+          mouseInfluence={0.5}
+          noiseAmount={0.02}
+          distortion={0.06}
         />
 
-        {/* Pulsing Gradient Blobs (#DB4A2B & #F8A348) */}
-        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] bg-gradient-blob-red pointer-events-none animate-float-orb" />
-        <div className="absolute top-[300px] left-[-15vw] w-[50vw] h-[50vw] bg-gradient-blob-orange pointer-events-none animate-float-orb" style={{ animationDelay: '4s' }} />
+        {/* Vibrant Glowing Background Orbs */}
+        <div className="absolute top-[-50px] left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-[radial-gradient(circle_at_center,rgba(0,102,255,0.6)_0%,transparent_70%)] blur-[100px] rounded-full pointer-events-none animate-float-orb" />
+        <div className="absolute top-[250px] left-[-100px] w-[450px] h-[450px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.4)_0%,transparent_70%)] blur-[110px] rounded-full pointer-events-none animate-float-orb" style={{ animationDelay: '4s' }} />
+        <div className="absolute top-[180px] right-[-100px] w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(255,69,0,0.3)_0%,transparent_70%)] blur-[110px] rounded-full pointer-events-none animate-float-orb" style={{ animationDelay: '7s' }} />
 
         {/* Top Tagline */}
-        <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-6 mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-[#1E1E1E] text-xs font-mono tracking-widest uppercase text-[#F8A348]">
+        <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-4 mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-[#1E1E1E]/90 text-xs font-mono tracking-widest uppercase text-[#F8A348] backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-[#DB4A2B] animate-ping" />
             <span>Google Gemma Open Model • On-Device Privacy</span>
           </div>
@@ -91,29 +92,28 @@ export default function Landing() {
           </span>
         </div>
 
-        {/* Massive Typographic Poster Headline */}
-        <div className="relative z-10 my-auto">
-          <h1 className="font-clash text-[13vw] sm:text-[11vw] lg:text-[9.5vw] font-bold text-white uppercase leading-[0.8] tracking-tighter mb-6">
-            EMPATHETIC
-            <br />
-            <span className="pl-[8vw] sm:pl-[12vw] text-[#DB4A2B] italic font-normal">
+        {/* Proportional Hero Headline & Content */}
+        <div className="relative z-10 my-auto py-2">
+          <h1 className="font-clash text-5xl sm:text-7xl lg:text-8xl font-bold text-white uppercase leading-[0.92] tracking-tighter mb-4 hero-text-glow">
+            EMPATHETIC{' '}
+            <span className="text-[#DB4A2B] italic font-normal">
               MENTAL CARE
             </span>
           </h1>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-8">
-            <p className="lg:col-span-6 text-lg sm:text-xl text-neutral-300 max-w-xl font-light leading-relaxed">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end mt-4">
+            <p className="lg:col-span-7 text-base sm:text-lg text-neutral-200 max-w-xl font-light leading-relaxed">
               An offline-first, multilingual AI companion engineered for India's 1.4 billion citizens. Delivering high-fidelity supportive care, 24/7 crisis triage, and CBT tools across 10+ Indic languages.
             </p>
 
             {/* Interactive Directional Fill CTA Buttons */}
-            <div className="lg:col-span-6 flex flex-wrap gap-4 lg:justify-end">
-              <Link href="/demo" className="btn-directional-fill px-8 py-4 text-xs tracking-[0.2em] rounded-none flex items-center gap-3">
+            <div className="lg:col-span-5 flex flex-wrap gap-3 lg:justify-end">
+              <Link href="/demo" className="btn-directional-fill px-6 py-3.5 text-xs tracking-[0.2em] rounded-none flex items-center gap-2.5 shadow-[0_0_25px_rgba(219,74,43,0.4)]">
                 <span>Start Session</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
-              <Link href="/blueprint" className="px-8 py-4 border border-white/20 text-xs font-mono uppercase tracking-[0.2em] text-white hover:border-[#DB4A2B] hover:text-[#DB4A2B] transition-colors flex items-center gap-2">
+              <Link href="/blueprint" className="px-6 py-3.5 border border-white/20 text-xs font-mono uppercase tracking-[0.2em] text-white hover:border-[#DB4A2B] hover:text-[#DB4A2B] transition-colors flex items-center gap-2 backdrop-blur-md">
                 <span>Technical Blueprint</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
@@ -122,16 +122,16 @@ export default function Landing() {
         </div>
 
         {/* Bottom Metadata Bar */}
-        <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-white/10 pt-8 mt-12">
+        <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-white/10 pt-6 mt-6">
           {[
             { label: 'AFFECTED CITIZENS', value: '197 MILLION' },
             { label: 'TREATMENT GAP', value: '83% UNTREATED' },
             { label: 'PSYCHIATRIST DENSITY', value: '0.75 PER 100K' },
             { label: 'INDIC LANGUAGES', value: '10+ NATIVE' }
           ].map((item, i) => (
-            <div key={i} className="space-y-1">
+            <div key={i} className="space-y-0.5">
               <div className="text-[10px] font-mono tracking-widest text-neutral-400 uppercase">{item.label}</div>
-              <div className="font-clash text-xl sm:text-2xl text-white font-bold">{item.value}</div>
+              <div className="font-clash text-lg sm:text-xl text-white font-bold">{item.value}</div>
             </div>
           ))}
         </div>
