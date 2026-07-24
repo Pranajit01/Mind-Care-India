@@ -63,16 +63,7 @@ export default function Landing() {
         <div className="absolute top-[200px] left-[-150px] w-[500px] h-[500px] aurora-blade-2 rounded-full pointer-events-none" />
         <div className="absolute top-[150px] right-[-150px] w-[500px] h-[500px] aurora-blade-3 rounded-full pointer-events-none" />
 
-        {/* Top Eyebrow Chip */}
-        <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-4 mb-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 text-xs font-mono tracking-wider text-amber-300 backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-[#ff2f3a] animate-ping" />
-            <span>v2.0 • Google Gemma On-Device Open Engine</span>
-          </div>
-          <span className="text-xs font-mono tracking-[0.25em] uppercase text-neutral-400">
-            MIND CARE INDIA // MANN SAATHI
-          </span>
-        </div>
+
 
         {/* Big Hero Headline & Subtitle */}
         <div className="relative z-10 my-auto py-2">
