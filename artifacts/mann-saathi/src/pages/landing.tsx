@@ -27,6 +27,8 @@ import {
 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 
+import { LightRays } from '@/components/LightRays';
+
 export default function Landing() {
   const impactData = [
     { year: 'Year 1', users: 100, district: 5 },
@@ -61,6 +63,19 @@ export default function Landing() {
       {/* Hero Section */}
       <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         
+        {/* Interactive WebGL LightRays Background */}
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#0052cc"
+          raysSpeed={1.5}
+          lightSpread={1.2}
+          rayLength={1.8}
+          followMouse={true}
+          mouseInfluence={0.35}
+          noiseAmount={0.03}
+          distortion={0.08}
+        />
+
         {/* Deep Blue #0052cc Atmospheric Radial Glows & Ethereal Orbs */}
         <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[750px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(0,82,204,0.5)_0%,transparent_70%)] blur-[120px] rounded-full pointer-events-none animate-float-orb" />
         <div className="absolute top-[320px] left-[-150px] w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(0,82,204,0.35)_0%,transparent_70%)] blur-[130px] rounded-full pointer-events-none animate-float-orb" style={{ animationDelay: '4s' }} />
