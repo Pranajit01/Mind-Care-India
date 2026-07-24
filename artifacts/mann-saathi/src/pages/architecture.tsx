@@ -219,11 +219,9 @@ export default function Architecture() {
               </thead>
               <tbody>
                 {[
-                  { model: 'GPT-4', deploy: 'Cloud-only', ram: 'N/A', latency: '500ms+', lang: 'Good', license: 'Proprietary', privacy: 'Cloud-stored', highlight: false },
-                  { model: 'Claude', deploy: 'Cloud-only', ram: 'N/A', latency: '400ms+', lang: 'Limited', license: 'Proprietary', privacy: 'Cloud-stored', highlight: false },
-                  { model: 'Llama 3.1', deploy: 'On-device', ram: '4GB+', latency: '200ms', lang: 'Limited', license: 'Meta', privacy: 'On-device', highlight: false },
-                  { model: 'Phi-3', deploy: 'On-device', ram: '2GB', latency: '150ms', lang: 'Limited', license: 'MIT', privacy: 'On-device', highlight: false },
-                  { model: 'Gemma 2B', deploy: 'On-device', ram: '1.2GB', latency: '100ms', lang: 'Excellent', license: 'Apache 2.0', privacy: 'On-device', highlight: true },
+                  { model: 'Generic Cloud LLM', deploy: 'Cloud-only', ram: 'N/A', latency: '500ms+', lang: 'Moderate', license: 'Proprietary', privacy: 'Cloud-stored', highlight: false },
+                  { model: 'Heavyweight Edge Models', deploy: 'On-device', ram: '4GB+', latency: '250ms+', lang: 'Limited', license: 'Restricted', privacy: 'On-device', highlight: false },
+                  { model: 'Google Gemma (Latest)', deploy: 'On-device / Edge', ram: '1.2GB', latency: '<100ms', lang: 'Native Indic (10+ Languages)', license: 'Apache 2.0', privacy: '100% On-device Privacy', highlight: true },
                 ].map((row) => (
                   <tr key={row.model} className={`border-b border-border ${row.highlight ? 'bg-primary/5' : ''}`}>
                     <td className={`py-3 px-4 ${row.highlight ? 'font-bold text-primary' : 'text-foreground'}`}>{row.model}</td>

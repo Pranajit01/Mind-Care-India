@@ -357,10 +357,9 @@ export default function Blueprint() {
                 <div className="space-y-3 text-sm text-muted-foreground">
                   <p><strong>Compared to alternatives:</strong></p>
                   <ul className="space-y-2 pl-4">
-                    <li>• GPT-4: Cloud-only, $0.01/1K tokens, privacy nightmare, no offline</li>
-                    <li>• Llama 3.1: No Indian language training, larger model size</li>
-                    <li>• Phi-3: Good size but limited multilingual</li>
-                    <li>• <strong className="text-primary">Gemma 2B INT4: 1.2GB RAM, 100ms latency, Apache 2.0 license, IndicBERT training data, runs on Snapdragon 665+, 8W power draw</strong></li>
+                    <li>• Generic Cloud Models: Cloud-only dependency, high latency penalty, privacy concerns, zero offline capability</li>
+                    <li>• Legacy Edge Models: Heavy memory footprint, restricted licenses, poor Indic language understanding</li>
+                    <li>• <strong className="text-primary">Google Gemma Model: 1.2GB RAM footprint, &lt;100ms latency, Apache 2.0 open license, fine-tuned on Indic language datasets, optimized for device runtimes (LiteRT) with minimal power draw</strong></li>
                   </ul>
                 </div>
               </div>
