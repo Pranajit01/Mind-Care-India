@@ -108,40 +108,53 @@ export function Navigation() {
         <div className="fixed inset-0 z-50 flex justify-end">
           {/* Backdrop Overlay */}
           <div
-            className="fixed inset-0 bg-black/75 backdrop-blur-md transition-opacity"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
             onClick={() => setDrawerOpen(false)}
           />
 
           {/* Drawer Panel */}
-          <aside className="relative w-full max-w-md bg-[#07080a] border-l border-white/15 h-full overflow-y-auto z-10 p-6 shadow-2xl flex flex-col justify-between">
+          <aside className="relative w-full max-w-md bg-[#0b0f17]/95 backdrop-blur-xl border-l border-white/10 h-full overflow-y-auto z-10 p-6 sm:p-7 shadow-2xl flex flex-col justify-between transition-all">
             <div>
               {/* Drawer Header */}
-              <div className="flex items-center justify-between pb-5 border-b border-white/10 mb-6">
-                <div className="flex items-center gap-2.5">
-                  <Brain className="w-5.5 h-5.5 text-[#ff6b4a]" />
-                  <span className="font-bold text-lg text-white uppercase tracking-wider">System Drawer</span>
+              <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#ff6b4a]/20 to-[#0052cc]/20 border border-[#ff6b4a]/30 flex items-center justify-center">
+                    <Brain className="w-5 h-5 text-[#ff6b4a]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-base text-white tracking-wide">Navigation & Control</h3>
+                    <p className="text-[11px] text-neutral-400">MindCare India System Menu</p>
+                  </div>
                 </div>
                 <button
                   onClick={() => setDrawerOpen(false)}
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-neutral-300 hover:text-white transition-colors"
+                  className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white border border-white/5 transition-all"
+                  aria-label="Close menu"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
               {/* Creator Attribution */}
-              <div className="glass-card p-4 rounded-2xl border border-amber-500/30 bg-amber-950/20 mb-6">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-amber-300 mb-1">
-                  <UserCheck className="w-4 h-4 text-[#ff6b4a]" />
-                  <span>Lead Architect & Creator</span>
+              <div className="relative overflow-hidden p-4 rounded-2xl border border-[#ff6b4a]/20 bg-gradient-to-r from-[#ff6b4a]/10 via-amber-500/5 to-transparent mb-6 group">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-[11px] font-medium tracking-wide text-[#ff6b4a]">
+                    <UserCheck className="w-3.5 h-3.5" />
+                    <span>Lead Architect & Creator</span>
+                  </div>
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#ff6b4a]/15 text-[#ff6b4a] border border-[#ff6b4a]/20">
+                    Verified
+                  </span>
                 </div>
-                <div className="font-bold text-base text-white">Pranajit Das</div>
-                <div className="flex items-center gap-3 text-xs font-mono mt-2.5">
+                
+                <div className="font-semibold text-lg text-white mt-1.5 mb-3">Pranajit Das</div>
+                
+                <div className="flex items-center gap-2">
                   <a
                     href="https://github.com/Pranajit01"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-neutral-300 hover:text-white flex items-center gap-1 bg-white/10 px-2.5 py-1 rounded-lg border border-white/10"
+                    className="flex-1 text-xs text-neutral-200 hover:text-white flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 px-3 py-2 rounded-xl border border-white/10 transition-all font-medium"
                   >
                     <Github className="w-3.5 h-3.5 text-[#ff6b4a]" />
                     <span>GitHub</span>
@@ -150,7 +163,7 @@ export function Navigation() {
                     href="https://www.linkedin.com/in/pranajitdas"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-neutral-300 hover:text-white flex items-center gap-1 bg-white/10 px-2.5 py-1 rounded-lg border border-white/10"
+                    className="flex-1 text-xs text-neutral-200 hover:text-white flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 px-3 py-2 rounded-xl border border-white/10 transition-all font-medium"
                   >
                     <Linkedin className="w-3.5 h-3.5 text-blue-400" />
                     <span>LinkedIn</span>
@@ -158,50 +171,50 @@ export function Navigation() {
                 </div>
               </div>
 
-              {/* Hamburger Action Items (Connect with Architecture, Connect with Helpline, Report Bug, Investor Pitch) */}
-              <div className="space-y-3 mb-6">
-                <div className="text-[11px] font-mono uppercase tracking-widest text-neutral-400 mb-2">
-                  Hamburger Quick Actions
+              {/* Quick Navigation / Actions */}
+              <div className="space-y-2.5 mb-6">
+                <div className="text-[11px] font-medium tracking-wider uppercase text-neutral-400 px-1 mb-2">
+                  Quick Access
                 </div>
 
                 {/* 1. Connect with Architecture */}
                 <Link
                   href="/blueprint"
                   onClick={() => setDrawerOpen(false)}
-                  className="flex items-center justify-between p-4 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 text-white transition-all group"
+                  className="flex items-center justify-between p-3.5 rounded-2xl border border-white/5 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/10 text-white transition-all group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-xl bg-[#0052cc]/20 border border-[#0052cc]/40 text-[#0052cc]">
+                    <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform">
                       <Cpu className="w-4 h-4 text-blue-400" />
                     </div>
                     <div>
-                      <div className="font-bold text-sm text-white group-hover:text-[#ff6b4a] transition-colors">
-                        Connect with Architecture
+                      <div className="font-medium text-sm text-white group-hover:text-blue-300 transition-colors">
+                        System Architecture
                       </div>
-                      <div className="text-xs text-neutral-400">Google Gemma INT4 system blueprint</div>
+                      <div className="text-xs text-neutral-400">Google Gemma INT4 blueprint</div>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 group-hover:translate-x-1 transition-all" />
                 </Link>
 
                 {/* 2. Connect with Helpline */}
                 <a
                   href="tel:14416"
                   onClick={() => setDrawerOpen(false)}
-                  className="flex items-center justify-between p-4 rounded-2xl border border-emerald-500/30 bg-emerald-950/20 hover:bg-emerald-950/40 text-white transition-all group"
+                  className="flex items-center justify-between p-3.5 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-500/30 text-white transition-all group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400">
+                    <div className="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center group-hover:scale-105 transition-transform">
                       <PhoneCall className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="font-bold text-sm text-emerald-400 group-hover:text-emerald-300 transition-colors">
-                        Connect with Helpline
+                      <div className="font-medium text-sm text-emerald-400 group-hover:text-emerald-300 transition-colors">
+                        Tele-MANAS Helpline
                       </div>
-                      <div className="text-xs text-neutral-300">Tele-MANAS (14416) 24/7 Toll-Free</div>
+                      <div className="text-xs text-neutral-400">14416 (24/7 Toll-Free)</div>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-emerald-500/70 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
                 </a>
 
                 {/* 3. Report Bug */}
@@ -210,40 +223,40 @@ export function Navigation() {
                     setDrawerOpen(false);
                     setBugModalOpen(true);
                   }}
-                  className="w-full flex items-center justify-between p-4 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 text-white transition-all group text-left"
+                  className="w-full flex items-center justify-between p-3.5 rounded-2xl border border-white/5 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/10 text-white transition-all group text-left"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300">
+                    <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center group-hover:scale-105 transition-transform">
                       <Bug className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="font-bold text-sm text-white group-hover:text-amber-300 transition-colors">
-                        Report Bug
+                      <div className="font-medium text-sm text-white group-hover:text-amber-300 transition-colors">
+                        Report Issue
                       </div>
                       <div className="text-xs text-neutral-400">Direct feedback to lead architect</div>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 group-hover:translate-x-1 transition-all" />
                 </button>
 
                 {/* 4. Investor Pitch */}
                 <Link
                   href="/pitch"
                   onClick={() => setDrawerOpen(false)}
-                  className="flex items-center justify-between p-4 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 text-white transition-all group"
+                  className="flex items-center justify-between p-3.5 rounded-2xl border border-white/5 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/10 text-white transition-all group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-xl bg-[#ff6b4a]/20 border border-[#ff6b4a]/40 text-[#ff6b4a]">
+                    <div className="w-9 h-9 rounded-xl bg-[#ff6b4a]/10 border border-[#ff6b4a]/20 text-[#ff6b4a] flex items-center justify-center group-hover:scale-105 transition-transform">
                       <Presentation className="w-4 h-4 text-[#ff6b4a]" />
                     </div>
                     <div>
-                      <div className="font-bold text-sm text-white group-hover:text-[#ff6b4a] transition-colors">
-                        Investor Pitch
+                      <div className="font-medium text-sm text-white group-hover:text-[#ff6b4a] transition-colors">
+                        Investor Deck
                       </div>
-                      <div className="text-xs text-neutral-400">Executive deck & market strategy</div>
+                      <div className="text-xs text-neutral-400">Executive deck & strategy</div>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 group-hover:translate-x-1 transition-all" />
                 </Link>
               </div>
             </div>
@@ -253,9 +266,9 @@ export function Navigation() {
               <Link
                 href="/demo"
                 onClick={() => setDrawerOpen(false)}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0052cc] via-[#ff6b4a] to-[#ff2f3a] text-white font-semibold text-xs uppercase tracking-widest text-center flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,107,74,0.5)]"
+                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#ff6b4a] to-[#ff4b5c] hover:from-[#ff7b5c] hover:to-[#ff5c6c] text-white font-medium text-sm text-center flex items-center justify-center gap-2 shadow-lg shadow-[#ff6b4a]/20 transition-all hover:shadow-[#ff6b4a]/30 active:scale-[0.99]"
               >
-                <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
+                <Sparkles className="w-4 h-4 text-amber-200" />
                 <span>Launch AI Companion</span>
               </Link>
             </div>

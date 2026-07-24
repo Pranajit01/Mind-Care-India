@@ -3,7 +3,7 @@ import { AlertTriangle, Phone, Brain, Shield, Github, Linkedin, Mail, UserCheck 
 
 export function Footer() {
   return (
-    <footer className="bg-[#07080a] border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 lg:px-8 relative z-20">
+    <footer className="border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 lg:px-8 relative z-20 backdrop-blur-md bg-black/20">
       <div className="max-w-7xl mx-auto">
         
         {/* Emergency Safety Disclaimer Banner */}

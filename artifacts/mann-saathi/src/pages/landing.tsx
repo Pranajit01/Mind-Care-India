@@ -37,7 +37,7 @@ export default function Landing() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#07080a] text-white selection:bg-[#ff6b4a]/30 selection:text-amber-200 overflow-x-hidden relative font-sans">
+    <div className="min-h-screen text-white selection:bg-[#ff6b4a]/30 selection:text-amber-200 overflow-x-hidden relative font-sans">
       
       {/* 5% Grain Film Overlay */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.05] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] mix-blend-overlay" />
@@ -153,7 +153,7 @@ export default function Landing() {
                   <XAxis dataKey="condition" stroke="#a3a3a3" fontSize={12} />
                   <YAxis stroke="#a3a3a3" fontSize={12} unit="%" />
                   <Tooltip 
-                    contentStyle={{ backgroundColor: '#07080a', borderColor: 'rgba(255,255,255,0.2)', borderRadius: '12px' }}
+                    contentStyle={{ backgroundColor: 'rgba(15, 23, 42, 0.85)', backdropFilter: 'blur(16px)', borderColor: 'rgba(255,255,255,0.2)', borderRadius: '12px', boxShadow: '0 10px 25px rgba(0,0,0,0.5)' }}
                     labelStyle={{ color: '#ffffff' }}
                   />
                   <Bar dataKey="gap" fill="#ff6b4a" radius={[6, 6, 0, 0]} isAnimationActive={true} animationDuration={1500} />
@@ -214,10 +214,10 @@ export default function Landing() {
         {/* 4-Tier Animated Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {[
-            { level: 'Level 1', label: 'Mild Stress', color: 'border-emerald-500/30 bg-emerald-950/20', textColor: 'text-emerald-400', action: 'Gemma CBT companion & journal prompts' },
-            { level: 'Level 2', label: 'Moderate Anxiety', color: 'border-amber-500/30 bg-amber-950/20', textColor: 'text-amber-300', action: 'Interactive 4-7-8 breathwork & mood logs' },
-            { level: 'Level 3', label: 'High Distress', color: 'border-orange-500/30 bg-orange-950/20', textColor: 'text-orange-400', action: 'Tele-MANAS counselor booking & SMS alert' },
-            { level: 'Level 4', label: 'Active Crisis', color: 'border-red-500/30 bg-red-950/20', textColor: 'text-red-400', action: '1-Tap emergency helpline dialer & protocol' },
+            { level: 'Level 1', label: 'Mild Stress', color: 'border-emerald-500/30 bg-gradient-to-b from-emerald-500/15 via-white/[0.08] to-white/[0.02]', textColor: 'text-emerald-400', action: 'Gemma CBT companion & journal prompts' },
+            { level: 'Level 2', label: 'Moderate Anxiety', color: 'border-amber-500/30 bg-gradient-to-b from-amber-500/15 via-white/[0.08] to-white/[0.02]', textColor: 'text-amber-300', action: 'Interactive 4-7-8 breathwork & mood logs' },
+            { level: 'Level 3', label: 'High Distress', color: 'border-orange-500/30 bg-gradient-to-b from-orange-500/15 via-white/[0.08] to-white/[0.02]', textColor: 'text-orange-400', action: 'Tele-MANAS counselor booking & SMS alert' },
+            { level: 'Level 4', label: 'Active Crisis', color: 'border-red-500/30 bg-gradient-to-b from-red-500/15 via-white/[0.08] to-white/[0.02]', textColor: 'text-red-400', action: '1-Tap emergency helpline dialer & protocol' },
           ].map((stage) => (
             <div key={stage.level} className={`glass-card ${stage.color} p-6 rounded-2xl text-center hover:scale-105 transition-transform`}>
               <Activity className={`w-7 h-7 ${stage.textColor} mx-auto mb-3`} />
