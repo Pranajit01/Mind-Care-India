@@ -9,6 +9,7 @@ import {
   TrendingDown, 
   AlertTriangle,
   ArrowRight,
+  ArrowUpRight,
   Check,
   Zap,
   Lock,
@@ -26,7 +27,6 @@ import {
   Sliders
 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
-
 import { LightRays } from '@/components/LightRays';
 
 export default function Landing() {
@@ -55,15 +55,15 @@ export default function Landing() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-foreground selection:bg-[#0052cc]/40 selection:text-white overflow-x-hidden relative">
+    <div className="min-h-screen bg-[#050505] text-foreground selection:bg-[#DB4A2B] selection:text-white overflow-x-hidden relative font-sans">
       
-      {/* 5% Opacity Grain Overlay */}
+      {/* 5% Opacity Global Grain Overlay */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.05] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] mix-blend-overlay" />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Hero Section - Typographic Poster Drama + WebGL LightRays */}
+      <section className="relative min-h-[96vh] flex flex-col justify-between pt-32 pb-20 px-4 sm:px-8 lg:px-12 overflow-hidden border-b border-white/10">
         
-        {/* Interactive WebGL LightRays Background */}
+        {/* WebGL LightRays Effect */}
         <LightRays
           raysOrigin="top-center"
           raysColor="#0052cc"
@@ -76,112 +76,108 @@ export default function Landing() {
           distortion={0.08}
         />
 
-        {/* Deep Blue #0052cc Atmospheric Radial Glows & Ethereal Orbs */}
-        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[750px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(0,82,204,0.5)_0%,transparent_70%)] blur-[120px] rounded-full pointer-events-none animate-float-orb" />
-        <div className="absolute top-[320px] left-[-150px] w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(0,82,204,0.35)_0%,transparent_70%)] blur-[130px] rounded-full pointer-events-none animate-float-orb" style={{ animationDelay: '4s' }} />
-        <div className="absolute top-[220px] right-[-150px] w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(255,69,0,0.15)_0%,transparent_70%)] blur-[130px] rounded-full pointer-events-none animate-float-orb" style={{ animationDelay: '7s' }} />
+        {/* Pulsing Gradient Blobs (#DB4A2B & #F8A348) */}
+        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] bg-gradient-blob-red pointer-events-none animate-float-orb" />
+        <div className="absolute top-[300px] left-[-15vw] w-[50vw] h-[50vw] bg-gradient-blob-orange pointer-events-none animate-float-orb" style={{ animationDelay: '4s' }} />
 
-        <div className="relative max-w-5xl mx-auto text-center z-10 animate-fade-in-up">
-          
-          {/* Accent Label */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-[#111111]/80 text-[#FF4500] text-xs font-mono tracking-widest uppercase mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(0,82,204,0.3)]">
-            <span className="w-2 h-2 rounded-full bg-[#FF4500] animate-ping" />
+        {/* Top Tagline */}
+        <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-6 mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-[#1E1E1E] text-xs font-mono tracking-widest uppercase text-[#F8A348]">
+            <span className="w-2 h-2 rounded-full bg-[#DB4A2B] animate-ping" />
             <span>Google Gemma Open Model • On-Device Privacy</span>
           </div>
+          <span className="text-xs font-mono tracking-[0.3em] uppercase text-neutral-400">
+            MIND CARE INDIA // MANN SAATHI
+          </span>
+        </div>
 
-          {/* Hero Heading in Playfair Display with Text Shadow Glow */}
-          <h1 className="font-playfair text-6xl sm:text-7xl lg:text-9xl text-[#ffe0e0] leading-[0.9] tracking-tighter mb-8 hero-text-glow">
-            Empathetic Mental Care
+        {/* Massive Typographic Poster Headline */}
+        <div className="relative z-10 my-auto">
+          <h1 className="font-clash text-[13vw] sm:text-[11vw] lg:text-[9.5vw] font-bold text-white uppercase leading-[0.8] tracking-tighter mb-6">
+            EMPATHETIC
             <br />
-            <span className="italic font-normal text-white">for <span className="accent-orange">1.4 Billion</span></span>
+            <span className="pl-[8vw] sm:pl-[12vw] text-[#DB4A2B] italic font-normal">
+              MENTAL CARE
+            </span>
           </h1>
 
-          {/* Subtext */}
-          <p className="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed mb-12 font-sans tracking-wide">
-            An offline-first, multilingual AI companion engineered specifically for India's socio-cultural healthcare ecosystem. High-fidelity supportive care, 24/7 crisis triage, and CBT tools across 10+ Indic languages.
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-8">
+            <p className="lg:col-span-6 text-lg sm:text-xl text-neutral-300 max-w-xl font-light leading-relaxed">
+              An offline-first, multilingual AI companion engineered for India's 1.4 billion citizens. Delivering high-fidelity supportive care, 24/7 crisis triage, and CBT tools across 10+ Indic languages.
+            </p>
 
-          {/* Hero Action Buttons - featuring Void Button */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-            
-            {/* Void Button with #FF4500 Aura Glow */}
-            <Link href="/demo" className="void-button px-8 py-4 text-white font-semibold flex items-center gap-3">
-              <span>Start Session with Mann Saathi</span>
-              <ArrowRight className="w-4 h-4 text-[#FF4500]" />
-            </Link>
+            {/* Interactive Directional Fill CTA Buttons */}
+            <div className="lg:col-span-6 flex flex-wrap gap-4 lg:justify-end">
+              <Link href="/demo" className="btn-directional-fill px-8 py-4 text-xs tracking-[0.2em] rounded-none flex items-center gap-3">
+                <span>Start Session</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
 
-            {/* Secondary Glass Button */}
-            <Link href="/blueprint" className="inline-flex items-center gap-2 px-8 py-4 rounded-full glass-card text-xs font-mono uppercase tracking-widest text-neutral-300 hover:text-white border border-white/10 hover:border-white/20 transition-all">
-              <span>View Technical Blueprint</span>
-              <ChevronRight className="w-4 h-4 text-neutral-500" />
-            </Link>
-
+              <Link href="/blueprint" className="px-8 py-4 border border-white/20 text-xs font-mono uppercase tracking-[0.2em] text-white hover:border-[#DB4A2B] hover:text-[#DB4A2B] transition-colors flex items-center gap-2">
+                <span>Technical Blueprint</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
-
-          {/* High-Contrast Quick Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
-            {[
-              { title: '197 Million', subtitle: 'Affected Citizens in India', accent: 'text-white', border: 'hover:border-[#0052cc]' },
-              { title: '83% Gap', subtitle: 'Untreated Depression Rate', accent: 'accent-orange', border: 'hover:border-[#FF4500]' },
-              { title: '0.75 per 100k', subtitle: 'Psychiatrists Density', accent: 'text-[#0052cc]', border: 'hover:border-[#0052cc]' },
-              { title: '10+ Indic', subtitle: 'Native Languages & Dialects', accent: 'text-neutral-200', border: 'hover:border-[#0052cc]' }
-            ].map((stat, idx) => (
-              <div key={idx} className={`glass-card p-6 rounded-2xl ${stat.border}`}>
-                <div className={`font-playfair text-3xl sm:text-4xl font-normal ${stat.accent} mb-1`}>
-                  {stat.title}
-                </div>
-                <div className="text-xs text-neutral-400 font-mono tracking-widest uppercase">
-                  {stat.subtitle}
-                </div>
-              </div>
-            ))}
-          </div>
-
         </div>
+
+        {/* Bottom Metadata Bar */}
+        <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-white/10 pt-8 mt-12">
+          {[
+            { label: 'AFFECTED CITIZENS', value: '197 MILLION' },
+            { label: 'TREATMENT GAP', value: '83% UNTREATED' },
+            { label: 'PSYCHIATRIST DENSITY', value: '0.75 PER 100K' },
+            { label: 'INDIC LANGUAGES', value: '10+ NATIVE' }
+          ].map((item, i) => (
+            <div key={i} className="space-y-1">
+              <div className="text-[10px] font-mono tracking-widest text-neutral-400 uppercase">{item.label}</div>
+              <div className="font-clash text-xl sm:text-2xl text-white font-bold">{item.value}</div>
+            </div>
+          ))}
+        </div>
+
       </section>
 
       {/* Infinite Horizontal Metrics Ticker */}
-      <section className="relative h-16 bg-[#000000]/80 border-y border-white/5 overflow-hidden flex items-center z-20">
+      <section className="relative h-16 bg-[#1E1E1E] border-y border-white/10 overflow-hidden flex items-center z-20">
         <div className="animate-infinite-ticker flex gap-12 whitespace-nowrap items-center">
           {[...tickerItems, ...tickerItems].map((item, index) => (
             <div key={index} className="inline-flex items-center gap-3">
-              <span className="text-xs font-mono tracking-widest text-neutral-500 uppercase">{item.label}:</span>
-              <span className="text-sm font-mono font-semibold text-white bg-[#0052cc]/30 px-2 py-0.5 rounded border border-[#0052cc]/40">{item.value}</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF4500] ml-6" />
+              <span className="text-xs font-mono tracking-widest text-neutral-400 uppercase">{item.label}:</span>
+              <span className="text-sm font-mono font-bold text-[#F8A348] px-2 py-0.5 bg-black/40 border border-white/10">{item.value}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#DB4A2B] ml-6" />
             </div>
           ))}
         </div>
       </section>
 
-      {/* Problem & Treatment Gap Analysis Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative animate-fade-in-up">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-mono tracking-widest uppercase accent-orange mb-3 block">Socio-Cultural Context</span>
-          <h2 className="font-playfair text-4xl sm:text-6xl text-white mb-4 tracking-tighter">
-            India's Mental Healthcare Crisis
-          </h2>
-          <p className="text-neutral-400 text-lg">
-            Structural scarcity, language isolation, and acute social stigma prevent 8 out of 10 individuals from accessing professional psychiatric intervention.
-          </p>
-        </div>
+      {/* Massive Category Divider 1 */}
+      <div className="py-24 px-4 sm:px-8 border-b border-white/10 relative overflow-hidden bg-gradient-to-r from-[#F8A348]/10 to-transparent">
+        <h2 className="font-clash text-[10vw] font-extrabold uppercase text-white/90 tracking-tighter leading-none">
+          SOCIO-CULTURAL CONTEXT
+        </h2>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-16">
-          <div className="glass-card p-8 rounded-3xl">
-            <h3 className="font-playfair text-2xl text-white mb-6 flex items-center gap-3">
-              <TrendingDown className="w-6 h-6 text-[#FF4500]" />
-              Treatment Gap by Mental Health Condition
+      {/* Problem & Treatment Gap Analysis Section */}
+      <section className="py-24 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto border-b border-white/10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          
+          <div className="glass-card p-8 rounded-none border border-white/10 bg-[#1E1E1E]/80">
+            <h3 className="font-clash text-3xl text-white mb-6 uppercase tracking-tight flex items-center gap-3">
+              <TrendingDown className="w-6 h-6 text-[#DB4A2B]" />
+              Treatment Gap Breakdown
             </h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={treatmentGapData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                  <XAxis dataKey="condition" stroke="#737373" fontSize={12} />
-                  <YAxis stroke="#737373" fontSize={12} unit="%" />
+                  <XAxis dataKey="condition" stroke="#a3a3a3" fontSize={12} />
+                  <YAxis stroke="#a3a3a3" fontSize={12} unit="%" />
                   <Tooltip 
-                    contentStyle={{ backgroundColor: '#050505', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
+                    contentStyle={{ backgroundColor: '#1E1E1E', borderColor: 'rgba(255,255,255,0.2)', borderRadius: '0px' }}
                     labelStyle={{ color: '#ffffff' }}
                   />
-                  <Bar dataKey="gap" fill="#0052cc" radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="gap" fill="#DB4A2B" radius={[0, 0, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -193,111 +189,107 @@ export default function Landing() {
                 icon: Users,
                 title: 'Severe Professional Shortage',
                 desc: 'India has fewer than 9,000 psychiatrists for 1.4 billion people. Rural districts often have zero access to mental health practitioners.',
-                accent: 'text-[#FF4500]'
+                accent: 'text-[#DB4A2B]'
               },
               {
                 icon: Languages,
                 title: 'Linguistic Exclusion',
                 desc: 'Most traditional therapy tools are built exclusively in English, leaving over 90% of the population without accessible care in native Indic languages.',
-                accent: 'text-[#0052cc]'
+                accent: 'text-[#F8A348]'
               },
               {
                 icon: Shield,
                 title: 'Social Stigma & Privacy Risks',
                 desc: 'Fear of social judgment causes users to avoid clinics. Mind Care India ensures 100% on-device processing so personal feelings never leak.',
-                accent: 'text-emerald-400'
+                accent: 'text-[#FF89A9]'
               }
             ].map((problem, i) => (
-              <div key={i} className="glass-card p-6 rounded-2xl flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10 shrink-0 blue-chrome-filter">
+              <div key={i} className="p-6 border border-white/10 bg-[#111111] hover:border-[#DB4A2B] transition-colors flex items-start gap-4">
+                <div className="p-3 bg-white/5 border border-white/10 shrink-0">
                   <problem.icon className={`w-6 h-6 ${problem.accent}`} />
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-white mb-1">{problem.title}</h4>
-                  <p className="text-sm text-neutral-400 leading-relaxed">{problem.desc}</p>
+                  <h4 className="text-lg font-bold uppercase tracking-wider text-white mb-1">{problem.title}</h4>
+                  <p className="text-sm text-neutral-400 leading-relaxed font-light">{problem.desc}</p>
                 </div>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* 4-Tier Safety Level & Crisis Matrix Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative animate-fade-in-up">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0052cc]/20 border border-[#0052cc]/40 text-cyan-300 text-xs font-mono uppercase tracking-widest mb-4">
-            Clinical Safety Matrix
-          </div>
-          <h2 className="font-playfair text-4xl sm:text-6xl text-white mb-4 tracking-tighter">
-            4-Tier Safety & Crisis Escalation System
-          </h2>
-          <p className="text-neutral-400 text-lg">
-            Multi-signal safety classifier automatically routes user distress states from self-guided CBT tools up to immediate 1-tap emergency helpline connections.
-          </p>
-        </div>
+      {/* Massive Category Divider 2 */}
+      <div className="py-24 px-4 sm:px-8 border-b border-white/10 relative overflow-hidden bg-gradient-to-r from-[#DB4A2B]/10 to-transparent text-right">
+        <h2 className="font-clash text-[10vw] font-extrabold uppercase text-white/90 tracking-tighter leading-none">
+          CLINICAL SAFETY MATRIX
+        </h2>
+      </div>
 
+      {/* 4-Tier Safety Level & Crisis Matrix Section */}
+      <section className="py-24 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto border-b border-white/10">
+        
         {/* 4-Tier Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {[
-            { level: 'Level 1', label: 'Mild Stress', color: 'border-emerald-500/30 bg-emerald-950/20', textColor: 'text-emerald-400', action: 'Gemma CBT companion & journal prompts' },
-            { level: 'Level 2', label: 'Moderate Anxiety', color: 'border-[#0052cc]/30 bg-[#0052cc]/10', textColor: 'text-cyan-400', action: 'Interactive 4-7-8 breathwork & mood logs' },
-            { level: 'Level 3', label: 'High Distress', color: 'border-[#FF4500]/30 bg-[#FF4500]/10', textColor: 'text-[#FF4500]', action: 'Tele-MANAS counselor booking & SMS alert' },
-            { level: 'Level 4', label: 'Active Crisis', color: 'border-red-500/30 bg-red-950/20', textColor: 'text-red-400', action: '1-Tap emergency helpline dialer & protocol' },
+            { level: 'LEVEL 01', label: 'MILD STRESS', color: 'border-emerald-500/40 bg-emerald-950/20', textColor: 'text-emerald-400', action: 'Gemma CBT companion & journal prompts' },
+            { level: 'LEVEL 02', label: 'MODERATE ANXIETY', color: 'border-[#F8A348]/40 bg-[#F8A348]/10', textColor: 'text-[#F8A348]', action: 'Interactive 4-7-8 breathwork & mood logs' },
+            { level: 'LEVEL 03', label: 'HIGH DISTRESS', color: 'border-[#DB4A2B]/40 bg-[#DB4A2B]/10', textColor: 'text-[#DB4A2B]', action: 'Tele-MANAS counselor booking & SMS alert' },
+            { level: 'LEVEL 04', label: 'ACTIVE CRISIS', color: 'border-red-500/40 bg-red-950/20', textColor: 'text-red-400', action: '1-Tap emergency helpline dialer & protocol' },
           ].map((stage) => (
-            <div key={stage.level} className={`glass-card ${stage.color} p-6 rounded-2xl text-center`}>
-              <Activity className={`w-8 h-8 ${stage.textColor} mx-auto mb-3`} />
-              <div className={`font-playfair text-2xl ${stage.textColor} mb-1`}>{stage.level}</div>
-              <div className="text-sm font-semibold text-white mb-2">{stage.label}</div>
-              <div className="text-xs text-neutral-400 leading-relaxed">{stage.action}</div>
+            <div key={stage.level} className={`p-6 border ${stage.color} text-center space-y-3`}>
+              <Activity className={`w-8 h-8 ${stage.textColor} mx-auto`} />
+              <div className={`font-mono text-xs tracking-widest ${stage.textColor}`}>{stage.level}</div>
+              <div className="font-clash text-xl font-bold text-white uppercase">{stage.label}</div>
+              <div className="text-xs text-neutral-400 leading-relaxed font-light">{stage.action}</div>
             </div>
           ))}
         </div>
 
         {/* 3-Step Protocol Pipeline */}
-        <div className="glass-card p-8 rounded-3xl border border-white/10">
-          <h3 className="font-playfair text-3xl text-white mb-8 text-center">Crisis Response Protocol Pipeline</h3>
+        <div className="p-8 border border-white/10 bg-[#111111]">
+          <h3 className="font-clash text-3xl text-white mb-8 text-center uppercase tracking-tight">Crisis Response Protocol Pipeline</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-2xl bg-[#0052cc]/20 border border-[#0052cc]/40 flex items-center justify-center mb-4 text-[#0052cc] font-mono font-bold text-lg">
-                1
+              <div className="w-12 h-12 border border-[#F8A348] text-[#F8A348] font-mono font-bold text-lg flex items-center justify-center mb-4">
+                01
               </div>
-              <h4 className="font-semibold text-white mb-2">Real-Time Distress Detection</h4>
-              <p className="text-sm text-neutral-400 leading-relaxed">
+              <h4 className="font-bold text-white uppercase tracking-wider mb-2">Real-Time Detection</h4>
+              <p className="text-xs text-neutral-400 leading-relaxed font-light">
                 DistilBERT & Indic BERT safety classifiers analyze every voice and text message for distress signals with sub-50ms inference.
               </p>
             </div>
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-2xl bg-[#FF4500]/20 border border-[#FF4500]/40 flex items-center justify-center mb-4 text-[#FF4500] font-mono font-bold text-lg">
-                2
+              <div className="w-12 h-12 border border-[#DB4A2B] text-[#DB4A2B] font-mono font-bold text-lg flex items-center justify-center mb-4">
+                02
               </div>
-              <h4 className="font-semibold text-white mb-2">Immediate Grounding Intervention</h4>
-              <p className="text-sm text-neutral-400 leading-relaxed">
+              <h4 className="font-bold text-white uppercase tracking-wider mb-2">Immediate Intervention</h4>
+              <p className="text-xs text-neutral-400 leading-relaxed font-light">
                 Validates emotions, provides non-judgmental CBT grounding techniques, and remains present without leaving the user isolated.
               </p>
             </div>
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center mb-4 text-emerald-400 font-mono font-bold text-lg">
-                3
+              <div className="w-12 h-12 border border-emerald-500 text-emerald-400 font-mono font-bold text-lg flex items-center justify-center mb-4">
+                03
               </div>
-              <h4 className="font-semibold text-white mb-2">Direct Human Handoff</h4>
-              <p className="text-sm text-neutral-400 leading-relaxed">
+              <h4 className="font-bold text-white uppercase tracking-wider mb-2">Direct Human Handoff</h4>
+              <p className="text-xs text-neutral-400 leading-relaxed font-light">
                 One-touch seamless connection to Tele-MANAS (14416), NIMHANS (080-26995000), or Vandrevala Foundation (+91 9999 666 555).
               </p>
             </div>
           </div>
         </div>
+
       </section>
 
-      {/* Feature Grid (3-Column Asymmetrical Glass Grid) */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative animate-fade-in-up">
+      {/* Product & Module Grid (3-Column Brutalist Cards) */}
+      <section className="py-24 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto border-b border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0052cc]/20 border border-[#0052cc]/30 text-[#0052cc] text-xs font-mono uppercase tracking-widest mb-4">
-            System Architecture
-          </div>
-          <h2 className="font-playfair text-4xl sm:text-6xl text-white mb-4 tracking-tighter">
+          <div className="text-xs font-mono tracking-widest text-[#F8A348] uppercase mb-2">SYSTEM MODULES</div>
+          <h2 className="font-clash text-4xl sm:text-6xl text-white uppercase tracking-tighter mb-4">
             Architected for High Impact & Safety
           </h2>
-          <p className="text-neutral-400 text-lg">
+          <p className="text-neutral-400 text-lg font-light">
             Engineered around Google Gemma's compact model footprint to deliver private, real-time supportive therapy and emergency triage.
           </p>
         </div>
@@ -308,31 +300,31 @@ export default function Landing() {
               icon: Brain,
               title: 'Google Gemma Model Engine',
               desc: 'Fine-tuned on Indic conversational corpora. Executes locally via INT4 quantization with sub-100ms response latency.',
-              color: 'text-white'
+              color: 'text-[#DB4A2B]'
             },
             {
               icon: Languages,
               title: 'Native Indic Multilingual',
               desc: 'Natively understands Hindi, Bengali, Tamil, Telugu, Marathi, Gujarati, Kannada, Punjabi, and Hinglish code-switching.',
-              color: 'text-[#0052cc]'
+              color: 'text-[#F8A348]'
             },
             {
               icon: AlertTriangle,
               title: '4-Tier Emergency Triage',
               desc: 'Distress detection algorithms automatically escalate high-risk signals to Tele-MANAS (14416) and NIMHANS emergency helplines.',
-              color: 'text-[#FF4500]'
+              color: 'text-[#FF89A9]'
             },
             {
               icon: Lock,
               title: 'Zero-Knowledge Privacy',
               desc: 'Encrypted local SQLite database and ChromaDB vector embeddings keep all conversation history strictly on-device.',
-              color: 'text-white'
+              color: 'text-[#DB4A2B]'
             },
             {
               icon: Activity,
               title: 'CBT Grounding & Breathwork',
               desc: 'Embedded interactive toolkits including 4-7-8 breathing animations, PHQ-9 mood tracking, and sensory grounding.',
-              color: 'text-[#0052cc]'
+              color: 'text-[#F8A348]'
             },
             {
               icon: Users,
@@ -341,143 +333,92 @@ export default function Landing() {
               color: 'text-emerald-400'
             }
           ].map((feature, idx) => (
-            <div key={idx} className="glass-card p-8 rounded-[48px] group">
-              <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-[#0052cc]/50 transition-all icon-hover-rotate blue-chrome-filter">
+            <div key={idx} className="p-8 border border-white/10 bg-[#111111] hover:border-[#DB4A2B] transition-all hover:scale-[1.02] group">
+              <div className="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center mb-6 icon-hover-rotate">
                 <feature.icon className={`w-6 h-6 ${feature.color}`} />
               </div>
-              <h3 className="font-playfair text-2xl text-white mb-3 tracking-tight">{feature.title}</h3>
-              <p className="text-sm text-neutral-400 leading-relaxed">{feature.desc}</p>
+              <h3 className="font-clash text-2xl text-white uppercase tracking-tight mb-3 group-hover:text-[#FF89A9] transition-colors">{feature.title}</h3>
+              <p className="text-xs text-neutral-400 leading-relaxed font-light">{feature.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Government & Healthcare Infrastructure Integrations Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative animate-fade-in-up">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-playfair text-4xl sm:text-6xl text-white mb-4 tracking-tighter">
-            Integrated with National Infrastructure
-          </h2>
-          <p className="text-neutral-400 text-lg">
-            Strengthening India's public health ecosystem by connecting digital AI companion support directly with established crisis networks.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { name: 'NIMHANS', role: 'Clinical Guidance & Validation Partner', icon: Brain, accent: 'text-white' },
-            { name: 'Tele-MANAS', role: 'Government Crisis Helpline Integration (14416)', icon: PhoneCall, accent: 'text-[#0052cc]' },
-            { name: 'Vandrevala Foundation', role: 'Emergency Crisis Referral Partner', icon: Shield, accent: 'text-[#FF4500]' },
-            { name: 'ASHA Network', role: 'Community Grassroots Distribution', icon: Users, accent: 'text-emerald-400' },
-          ].map((partner) => (
-            <div key={partner.name} className="glass-card p-6 rounded-2xl text-center">
-              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4 blue-chrome-filter">
-                <partner.icon className={`w-7 h-7 ${partner.accent}`} />
-              </div>
-              <h3 className="font-playfair text-2xl text-white mb-1">{partner.name}</h3>
-              <p className="text-xs text-neutral-400 leading-relaxed">{partner.role}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Growth Impact & Scalability Chart Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative animate-fade-in-up">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0052cc]/20 border border-[#0052cc]/30 text-[#0052cc] text-xs font-mono uppercase tracking-widest mb-4">
-              Growth Projection
-            </div>
-            <h2 className="font-playfair text-4xl sm:text-6xl text-white mb-6 tracking-tighter">
-              Scalable Impact Across 750+ Districts
+      {/* 12-Column Campaign Block */}
+      <section className="py-24 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto border-b border-white/10 bg-[#1E1E1E]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div className="lg:col-span-8">
+            <span className="text-xs font-mono tracking-widest text-[#F8A348] uppercase mb-4 block">// MISSION MANIFESTO</span>
+            <h2 className="font-clash text-4xl sm:text-6xl text-white uppercase tracking-tighter leading-[0.9] mb-6">
+              DEMOCRATIZING MENTAL WELLNESS FOR EVERY CORNER OF INDIA
             </h2>
-            <p className="text-neutral-400 text-base leading-relaxed mb-6">
-              Mind Care India is architected for rapid scaling across Tier-2/3 cities and rural panchayats. By removing cloud token costs and relying on on-device Gemma execution, district healthcare deployment costs drop by over 90%.
+            <p className="text-neutral-300 text-base font-light leading-relaxed max-w-2xl">
+              Mind Care India removes recurring cloud inference costs by executing Gemma on-device. State health departments can deploy AI companion services to rural panchayats with zero token budgets.
             </p>
-            <div className="space-y-3">
-              {[
-                'Zero recurring cloud GPU inference cost per chat session',
-                'Seamless deployment via state health department partnerships',
-                'ASHA worker offline tablet distribution for rural screening'
-              ].map((point, idx) => (
-                <div key={idx} className="flex items-center gap-3 text-sm text-neutral-300">
-                  <CheckCircle2 className="w-4 h-4 text-[#FF4500] shrink-0" />
-                  <span>{point}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
-          <div className="glass-card p-8 rounded-3xl">
-            <h3 className="font-playfair text-2xl text-white mb-6">User Adoption & District Deployment</h3>
-            <div className="h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={impactData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                  <defs>
-                    <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#0052cc" stopOpacity={0.7}/>
-                      <stop offset="95%" stopColor="#0052cc" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                  <XAxis dataKey="year" stroke="#737373" fontSize={12} />
-                  <YAxis stroke="#737373" fontSize={12} />
-                  <Tooltip 
-                    contentStyle={{ backgroundColor: '#050505', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
-                    labelStyle={{ color: '#ffffff' }}
-                  />
-                  <Area type="monotone" dataKey="district" stroke="#0052cc" fillOpacity={1} fill="url(#colorUsers)" name="Districts Covered" />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
+          <div className="lg:col-span-4 space-y-6">
+            {[
+              { title: 'Technical Blueprint', link: '/blueprint' },
+              { title: 'On-Device Architecture', link: '/architecture' },
+              { title: 'Target Personas', link: '/personas' },
+              { title: 'Investor Pitch Deck', link: '/pitch' },
+            ].map((item, idx) => (
+              <Link key={idx} href={item.link} className="flex items-center justify-between py-4 border-b border-white/20 text-white hover:text-[#DB4A2B] transition-colors group">
+                <span className="font-clash text-lg uppercase tracking-wider">{item.title}</span>
+                <div className="w-8 h-8 rounded-full border border-white/30 group-hover:border-[#DB4A2B] flex items-center justify-center">
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </div>
+              </Link>
+            ))}
           </div>
+
         </div>
       </section>
 
       {/* Code & IDE System Integration Block */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative animate-fade-in-up">
+      <section className="py-24 px-4 sm:px-8 lg:px-12 max-w-5xl mx-auto border-b border-white/10">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="font-playfair text-4xl text-white mb-3 tracking-tighter">On-Device Triage Pipeline</h2>
-          <p className="text-neutral-400 text-sm font-sans">
+          <h2 className="font-clash text-4xl text-white uppercase tracking-tighter mb-3">On-Device Triage Pipeline</h2>
+          <p className="text-neutral-400 text-sm font-light">
             Minimal runtime overhead. Sub-100ms response execution with zero external cloud dependencies.
           </p>
         </div>
 
-        <div className="bg-[#080808]/90 border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
-          {/* IDE Window Controls Bar */}
-          <div className="px-4 py-3 bg-[#0d0d0d] border-b border-white/10 flex items-center justify-between">
+        <div className="bg-[#111111] border border-white/10 shadow-2xl">
+          <div className="px-4 py-3 bg-[#1E1E1E] border-b border-white/10 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/80" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-              <div className="w-3 h-3 rounded-full bg-green-500/80" />
-              <span className="text-xs font-mono text-neutral-500 ml-2">gemma_indic_triage.ts</span>
+              <div className="w-3 h-3 bg-[#DB4A2B]" />
+              <div className="w-3 h-3 bg-[#F8A348]" />
+              <div className="w-3 h-3 bg-emerald-500" />
+              <span className="text-xs font-mono text-neutral-400 ml-2">gemma_indic_triage.ts</span>
             </div>
-            <div className="flex items-center gap-2 text-xs font-mono text-neutral-500">
-              <Sparkles className="w-3.5 h-3.5 text-[#FF4500]" />
+            <div className="flex items-center gap-2 text-xs font-mono text-neutral-400">
+              <Sparkles className="w-3.5 h-3.5 text-[#DB4A2B]" />
               <span>Gemma LiteRT INT4</span>
             </div>
           </div>
 
-          {/* Syntax Highlighted Code Window */}
           <div className="p-6 font-mono text-xs sm:text-sm text-neutral-300 leading-relaxed overflow-x-auto">
             <pre>
               <code>
-                <span className="text-[#0052cc]">import</span> &#123; <span className="text-cyan-300">GemmaLiteRTEngine</span>, <span className="text-cyan-300">IndicBERTClassifier</span> &#125; <span className="text-[#0052cc]">from</span> <span className="text-emerald-400">'@google/gemma-litert'</span>;<br /><br />
+                <span className="text-[#DB4A2B]">import</span> &#123; <span className="text-[#F8A348]">GemmaLiteRTEngine</span>, <span className="text-[#F8A348]">IndicBERTClassifier</span> &#125; <span className="text-[#DB4A2B]">from</span> <span className="text-emerald-400">'@google/gemma-litert'</span>;<br /><br />
                 <span className="text-neutral-500">// Initialize zero-knowledge on-device pipeline</span><br />
-                <span className="text-[#0052cc]">const</span> <span className="text-cyan-300">gemmaEngine</span> = <span className="text-[#0052cc]">new</span> <span className="text-cyan-300">GemmaLiteRTEngine</span>(&#123;<br />
+                <span className="text-[#DB4A2B]">const</span> <span className="text-[#F8A348]">gemmaEngine</span> = <span className="text-[#DB4A2B]">new</span> <span className="text-[#F8A348]">GemmaLiteRTEngine</span>(&#123;<br />
                 &nbsp;&nbsp;modelPath: <span className="text-emerald-400">'models/gemma-2b-indic-int4.bin'</span>,<br />
                 &nbsp;&nbsp;quantization: <span className="text-emerald-400">'INT4'</span>,<br />
-                &nbsp;&nbsp;maxMemoryMB: <span className="text-[#FF4500]">1200</span><br />
+                &nbsp;&nbsp;maxMemoryMB: <span className="text-[#DB4A2B]">1200</span><br />
                 &#125;);<br /><br />
-                <span className="text-[#0052cc]">export async function</span> <span className="text-cyan-300">processIndicMessage</span>(userMessage: <span className="text-[#0052cc]">string</span>) &#123;<br />
-                &nbsp;&nbsp;<span className="text-[#0052cc]">const</span> distressLevel = <span className="text-[#0052cc]">await</span> IndicBERTClassifier.evaluateDistress(userMessage);<br /><br />
-                &nbsp;&nbsp;<span className="text-[#0052cc]">if</span> (distressLevel &gt;= <span className="text-[#FF4500]">3</span>) &#123;<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-[#0052cc]">return</span> EmergencyTriageRouter.triggerHelplineReferral(&#123;<br />
+                <span className="text-[#DB4A2B]">export async function</span> <span className="text-[#F8A348]">processIndicMessage</span>(userMessage: <span className="text-[#DB4A2B]">string</span>) &#123;<br />
+                &nbsp;&nbsp;<span className="text-[#DB4A2B]">const</span> distressLevel = <span className="text-[#DB4A2B]">await</span> IndicBERTClassifier.evaluateDistress(userMessage);<br /><br />
+                &nbsp;&nbsp;<span className="text-[#DB4A2B]">if</span> (distressLevel &gt;= <span className="text-[#DB4A2B]">3</span>) &#123;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-[#DB4A2B]">return</span> EmergencyTriageRouter.triggerHelplineReferral(&#123;<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;helpline: <span className="text-emerald-400">'Tele-MANAS (14416)'</span>,<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action: <span className="text-emerald-400">'IMMEDIATE_ESCALATION'</span><br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&#125;);<br />
                 &nbsp;&nbsp;&#125;<br /><br />
-                &nbsp;&nbsp;<span className="text-[#0052cc]">return await</span> gemmaEngine.generateSupportiveResponse(&#123;<br />
+                &nbsp;&nbsp;<span className="text-[#DB4A2B]">return await</span> gemmaEngine.generateSupportiveResponse(&#123;<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;prompt: userMessage,<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;safetyGuardrails: <span className="text-emerald-400">'WHO_MHGAP_STRICT'</span><br />
                 &nbsp;&nbsp;&#125;);<br />
@@ -488,26 +429,24 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Call to Action (CTA) Hero Banner - Moody Dark Surrealist Style */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center relative animate-fade-in-up">
-        <div className="glass-card p-12 sm:p-20 rounded-[48px] border border-white/10 relative overflow-hidden bg-gradient-to-b from-[#1a4d7f]/40 to-[#050505]">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#0052cc]/30 blur-[120px] rounded-full pointer-events-none" />
-          
-          <h2 className="font-playfair text-5xl sm:text-7xl text-white mb-6 relative z-10 tracking-tighter">
-            Ready to experience <span className="italic accent-orange">Mann Saathi?</span>
+      {/* Call to Action Poster Banner */}
+      <section className="py-28 px-4 sm:px-8 lg:px-12 max-w-6xl mx-auto text-center relative">
+        <div className="p-12 sm:p-20 border border-white/10 bg-[#1E1E1E] relative overflow-hidden">
+          <h2 className="font-clash text-5xl sm:text-7xl lg:text-8xl text-white uppercase tracking-tighter leading-none mb-6">
+            READY TO FADE THE <span className="text-[#DB4A2B] italic font-normal">TREATMENT GAP?</span>
           </h2>
-          <p className="text-neutral-300 text-lg max-w-2xl mx-auto mb-10 font-sans relative z-10">
+          <p className="text-neutral-300 text-lg max-w-xl mx-auto mb-10 font-light">
             Powered by Google Gemma. Designed for 1.4 billion people. Experience the interactive live companion demo.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center relative z-10">
-            <Link href="/demo" className="void-button px-8 py-4 text-white font-semibold flex items-center gap-3">
-              <span>Try Interactive Demo</span>
-              <ArrowRight className="w-4 h-4 text-[#FF4500]" />
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link href="/demo" className="btn-directional-fill px-10 py-5 text-xs tracking-[0.25em] flex items-center justify-center gap-3">
+              <span>Launch Demo Session</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/pitch" className="inline-flex items-center gap-2 px-8 py-4 rounded-full glass-card text-xs font-mono uppercase tracking-widest text-neutral-300 hover:text-white border border-white/10 hover:border-white/20 transition-all">
-              <FileText className="w-4 h-4 text-[#FF4500]" />
-              <span>View Pitch Deck</span>
+            <Link href="/pitch" className="px-10 py-5 border border-white/20 text-xs font-mono uppercase tracking-[0.25em] text-white hover:border-[#DB4A2B] hover:text-[#DB4A2B] transition-colors flex items-center justify-center gap-2">
+              <FileText className="w-4 h-4" />
+              <span>Investor Pitch</span>
             </Link>
           </div>
         </div>

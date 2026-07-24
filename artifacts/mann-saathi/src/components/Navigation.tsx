@@ -44,11 +44,11 @@ export function Navigation() {
         ))}
       </div>
 
-      {/* Right Side Action Button - Void Pill */}
+      {/* Right Side Action Button - Directional Fill */}
       <div className="hidden sm:flex items-center gap-3">
-        <Link href="/demo" className="void-button px-4 py-1.5 text-xs text-white font-semibold flex items-center gap-1.5">
+        <Link href="/demo" className="btn-directional-fill px-4 py-1.5 text-[11px] rounded-none flex items-center gap-1.5">
           <span>Launch AI</span>
-          <ArrowRight className="w-3.5 h-3.5 text-[#FF4500]" />
+          <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>
 
