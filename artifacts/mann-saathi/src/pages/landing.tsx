@@ -78,14 +78,13 @@ export default function Landing() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end mt-4">
             <p className="lg:col-span-7 text-base sm:text-lg text-neutral-300 max-w-xl font-normal leading-relaxed">
-              An offline-first, multilingual AI companion engineered for India's healthcare ecosystem. High-fidelity supportive care, 24/7 crisis triage, and CBT tools across 10+ Indic languages.
+              An offline-first, multilingual AI companion engineered for India's healthcare ecosystem. High-fidelity supportive care, 24/7 crisis triage, and CBT tools across regional Indic languages.
             </p>
 
-            {/* Keycap Download & Interactive Action Row */}
-            <div className="lg:col-span-5 flex flex-wrap gap-3 lg:justify-end">
-              <Link href="/demo" className="btn-keycap bg-[#e6e6e6] text-[#2f3031] flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#ff2f3a]" />
-                <span>Start Session</span>
+            <div className="lg:col-span-5 flex flex-wrap items-center justify-start lg:justify-end gap-3 pt-4 sm:pt-0">
+              <Link href="/demo" className="btn-keycap bg-gradient-to-r from-[#ff6b4a] to-[#ff2f3a] text-white border-[#ff6b4a]/60 shadow-[0_0_20px_rgba(255,107,74,0.5)] flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
+                <span>Start Interactive Companion</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
@@ -104,7 +103,7 @@ export default function Landing() {
             { label: 'AFFECTED CITIZENS', value: '197 MILLION' },
             { label: 'TREATMENT GAP', value: '83% UNTREATED' },
             { label: 'PSYCHIATRIST DENSITY', value: '0.75 PER 100K' },
-            { label: 'INDIC LANGUAGES', value: '10+ NATIVE' }
+            { label: 'INDIC LANGUAGES', value: '6 ACTIVE (10+ NEXT)' }
           ].map((item, i) => (
             <div key={i} className="space-y-0.5">
               <div className="text-[11px] font-mono tracking-widest text-neutral-400 uppercase">{item.label}</div>
