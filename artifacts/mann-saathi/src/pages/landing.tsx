@@ -55,37 +55,6 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-[#030303] text-foreground selection:bg-purple-500/30 selection:text-purple-200 overflow-x-hidden">
       
-      {/* Floating Glass Navigation Pill */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[92%] max-w-3xl z-50 rounded-full glass-pill p-2 px-4 sm:px-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-cyan-400 flex items-center justify-center p-0.5 shadow-[0_0_15px_rgba(139,92,246,0.6)]">
-            <div className="w-full h-full bg-[#0a0a0a] rounded-full flex items-center justify-center">
-              <Brain className="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform" />
-            </div>
-          </div>
-          <span className="font-serif-editorial text-xl text-white tracking-wide">
-            Mann Saathi
-          </span>
-        </Link>
-
-        <div className="hidden md:flex items-center gap-5 text-xs uppercase tracking-wider font-semibold text-neutral-400">
-          <Link href="/demo" className="hover:text-purple-400 transition-colors">Demo</Link>
-          <Link href="/blueprint" className="hover:text-purple-400 transition-colors">Blueprint</Link>
-          <Link href="/architecture" className="hover:text-purple-400 transition-colors">Architecture</Link>
-          <Link href="/personas" className="hover:text-purple-400 transition-colors">Personas</Link>
-          <Link href="/pitch" className="hover:text-purple-400 transition-colors">Pitch Deck</Link>
-        </div>
-
-        {/* Shiny CTA Button */}
-        <Link href="/demo" className="relative group inline-flex items-center justify-center p-[1px] rounded-full overflow-hidden">
-          <span className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0%,#8b5cf6_40%,#06b6d4_50%,transparent_60%)] animate-spin-conic group-hover:opacity-100 transition-opacity" />
-          <span className="relative px-4 py-1.5 rounded-full bg-[#0a0a0a] text-xs font-semibold text-white group-hover:bg-purple-950/40 transition-colors flex items-center gap-1.5">
-            Launch AI
-            <ArrowRight className="w-3.5 h-3.5 text-purple-400 group-hover:translate-x-0.5 transition-transform" />
-          </span>
-        </Link>
-      </nav>
-
       {/* Hero Section */}
       <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         
@@ -530,64 +499,6 @@ export default function Landing() {
           </div>
         </div>
       </section>
-
-      {/* Footer (Synapse Dark Editorial Footer) */}
-      <footer className="bg-[#050505] border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-          
-          <div className="space-y-4 md:col-span-1">
-            <Link href="/" className="font-serif-editorial text-3xl text-white block">
-              Mann Saathi
-            </Link>
-            <p className="text-xs text-neutral-400 leading-relaxed font-sans">
-              Democratizing accessible, privacy-first mental healthcare across India using Google's Gemma open model series.
-            </p>
-          </div>
-
-          <div>
-            <h5 className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 mb-4">PLATFORM NAV</h5>
-            <ul className="space-y-2.5 text-xs text-neutral-400 font-sans">
-              <li><Link href="/demo" className="hover:text-white transition-colors">AI Companion Demo</Link></li>
-              <li><Link href="/blueprint" className="hover:text-white transition-colors">Technical Blueprint</Link></li>
-              <li><Link href="/architecture" className="hover:text-white transition-colors">On-Device Architecture</Link></li>
-              <li><Link href="/personas" className="hover:text-white transition-colors">Target Personas</Link></li>
-              <li><Link href="/pitch" className="hover:text-white transition-colors">Investor Pitch Deck</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h5 className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 mb-4">CRISIS HELPLINES</h5>
-            <ul className="space-y-2.5 text-xs text-neutral-400 font-sans">
-              <li className="text-purple-400 font-medium">Tele-MANAS: 14416 / 1800-891</li>
-              <li className="text-cyan-400 font-medium">Vandrevala Foundation: +91 9999 666 555</li>
-              <li className="text-emerald-400 font-medium">NIMHANS Helpline: 080-26995000</li>
-              <li className="text-neutral-400">KIRAN: 1800-599-0019</li>
-              <li className="text-neutral-400">National Emergency: 112</li>
-            </ul>
-          </div>
-
-          <div>
-            <h5 className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 mb-4">SYSTEM STATUS</h5>
-            <div className="glass-card p-4 rounded-xl space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-xs font-semibold text-white">All Systems Operational</span>
-              </div>
-              <p className="text-[11px] text-neutral-500">Google Gemma Model Engine running with 100% privacy & sub-100ms latency.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 font-sans gap-4">
-          <div>© {new Date().getFullYear()} Mind Care India (Mann Saathi). Open Source Apache 2.0.</div>
-          <div className="flex items-center gap-6">
-            <span>Privacy First</span>
-            <span>Zero Data Leakage</span>
-            <span>Google Gemma Powered</span>
-          </div>
-        </div>
-      </footer>
 
     </div>
   );

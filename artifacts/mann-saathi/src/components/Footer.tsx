@@ -1,101 +1,90 @@
 import { Link } from 'wouter';
-import { AlertCircle, Phone } from 'lucide-react';
+import { AlertTriangle, Phone } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-muted/30 border-t border-border mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-destructive/10 border border-destructive/30 rounded-lg p-6 mb-8 flex items-start gap-4">
-          <AlertCircle className="w-6 h-6 text-destructive flex-shrink-0 mt-0.5" />
+    <footer className="bg-[#050505] border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 lg:px-8 mt-24">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Emergency Disclaimer Banner */}
+        <div className="glass-card bg-red-950/20 border border-red-500/30 rounded-2xl p-6 mb-12 flex items-start gap-4">
+          <AlertTriangle className="w-6 h-6 text-red-400 shrink-0 mt-0.5" />
           <div className="flex-1">
-            <h3 className="font-display font-semibold text-foreground mb-2">Important Disclaimer</h3>
-            <p className="text-sm text-foreground/80 mb-3">
-              Mann Saathi is not a substitute for professional mental health care. If you are in crisis or
-              experiencing thoughts of self-harm, please reach out to these services immediately:
+            <h3 className="font-serif-editorial text-xl text-white mb-1">Important Safety Disclaimer</h3>
+            <p className="text-xs text-neutral-300 mb-3 leading-relaxed">
+              Mann Saathi provides supportive care and psychoeducation grounded in CBT principles, but is not a replacement for professional clinical therapy. If you are experiencing immediate crisis or thoughts of self-harm, please connect with official emergency services immediately:
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 text-sm">
-              <a
-                href="tel:14416"
-                className="inline-flex items-center gap-2 text-foreground font-medium hover:text-primary transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                Tele-MANAS: 14416
+            <div className="flex flex-wrap gap-4 text-xs font-mono">
+              <a href="tel:14416" className="text-purple-400 hover:underline flex items-center gap-1.5 font-semibold">
+                <Phone className="w-3.5 h-3.5" /> Tele-MANAS: 14416 / 1800-891
               </a>
-              <a
-                href="tel:9152987821"
-                className="inline-flex items-center gap-2 text-foreground font-medium hover:text-primary transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                iCall: 9152987821
+              <a href="tel:9152987821" className="text-cyan-400 hover:underline flex items-center gap-1.5 font-semibold">
+                <Phone className="w-3.5 h-3.5" /> Vandrevala Foundation: +91 9999 666 555
               </a>
-              <a
-                href="tel:112"
-                className="inline-flex items-center gap-2 text-foreground font-medium hover:text-primary transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                Emergency: 112
+              <a href="tel:08026995000" className="text-emerald-400 hover:underline flex items-center gap-1.5 font-semibold">
+                <Phone className="w-3.5 h-3.5" /> NIMHANS Helpline: 080-26995000
               </a>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold text-lg">MS</span>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          
+          <div className="space-y-4 md:col-span-1">
+            <Link href="/" className="font-serif-editorial text-3xl text-white block">
+              Mann Saathi
+            </Link>
+            <p className="text-xs text-neutral-400 leading-relaxed font-sans">
+              Democratizing accessible, privacy-first mental healthcare across India using Google's Gemma open model series.
+            </p>
+          </div>
+
+          <div>
+            <h5 className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 mb-4">PLATFORM NAV</h5>
+            <ul className="space-y-2.5 text-xs text-neutral-400 font-sans">
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li><Link href="/demo" className="hover:text-white transition-colors">AI Companion Demo</Link></li>
+              <li><Link href="/blueprint" className="hover:text-white transition-colors">Technical Blueprint</Link></li>
+              <li><Link href="/architecture" className="hover:text-white transition-colors">On-Device Architecture</Link></li>
+              <li><Link href="/personas" className="hover:text-white transition-colors">Target Personas</Link></li>
+              <li><Link href="/pitch" className="hover:text-white transition-colors">Investor Pitch Deck</Link></li>
+              <li><Link href="/roadmap" className="hover:text-white transition-colors">Feature Roadmap</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 mb-4">CRISIS HELPLINES</h5>
+            <ul className="space-y-2.5 text-xs text-neutral-400 font-sans">
+              <li className="text-purple-400 font-medium">Tele-MANAS: 14416 / 1800-891</li>
+              <li className="text-cyan-400 font-medium">Vandrevala Foundation: +91 9999 666 555</li>
+              <li className="text-emerald-400 font-medium">NIMHANS Helpline: 080-26995000</li>
+              <li className="text-neutral-400">KIRAN: 1800-599-0019</li>
+              <li className="text-neutral-400">National Emergency: 112</li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 mb-4">SYSTEM STATUS</h5>
+            <div className="glass-card p-4 rounded-xl space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-xs font-semibold text-white">All Systems Operational</span>
               </div>
-              <span className="font-display font-bold text-xl">Mann Saathi</span>
-            </div>
-            <p className="text-sm text-muted-foreground max-w-md">
-              An offline AI mental health companion designed to bridge India's massive mental healthcare
-              treatment gap. Works entirely on-device with no internet required, supporting 10+ Indian languages.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-display font-semibold mb-3">Platform</h4>
-            <div className="space-y-2 text-sm">
-              <Link href="/" className="block text-muted-foreground hover:text-primary transition-colors">
-                Home
-              </Link>
-              <Link href="/blueprint" className="block text-muted-foreground hover:text-primary transition-colors">
-                Blueprint
-              </Link>
-              <Link href="/demo" className="block text-muted-foreground hover:text-primary transition-colors">
-                Demo
-              </Link>
-              <Link href="/architecture" className="block text-muted-foreground hover:text-primary transition-colors">
-                Architecture
-              </Link>
+              <p className="text-[11px] text-neutral-500">Google Gemma Model Engine running with 100% privacy & sub-100ms latency.</p>
             </div>
           </div>
 
-          <div>
-            <h4 className="font-display font-semibold mb-3">Resources</h4>
-            <div className="space-y-2 text-sm">
-              <Link href="/personas" className="block text-muted-foreground hover:text-primary transition-colors">
-                User Personas
-              </Link>
-              <Link href="/pitch" className="block text-muted-foreground hover:text-primary transition-colors">
-                Investor Pitch
-              </Link>
-              <Link href="/roadmap" className="block text-muted-foreground hover:text-primary transition-colors">
-                Roadmap
-              </Link>
-            </div>
+        </div>
+
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 font-sans gap-4">
+          <div>© {new Date().getFullYear()} Mind Care India (Mann Saathi). Open Source Apache 2.0.</div>
+          <div className="flex items-center gap-6">
+            <span>Privacy First</span>
+            <span>Zero Data Leakage</span>
+            <span>Google Gemma Powered</span>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © 2024 Mann Saathi. Built for Google Solution Challenge 2024.
-          </p>
-          <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <span>SDG 3: Good Health & Wellbeing</span>
-            <span>Powered by Gemma</span>
-          </div>
-        </div>
       </div>
     </footer>
   );
