@@ -54,8 +54,8 @@ export default function Blueprint() {
           </p>
         </div>
 
-        {/* Clean Horizontal Glass Category Filter Tabs (No Overlapping Sidebars) */}
-        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
+        {/* Clean Responsive Glass Category Filter Tabs (Zero Cut-Off & No Scrollbars) */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-12 max-w-5xl mx-auto">
           {techSections.map((sec) => {
             const Icon = sec.icon;
             const isActive = activeTab === sec.id;
@@ -63,9 +63,9 @@ export default function Blueprint() {
               <button
                 key={sec.id}
                 onClick={() => setActiveTab(sec.id)}
-                className={`glass-nav-btn shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold transition-all ${
+                className={`glass-nav-btn flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold transition-all ${
                   isActive
-                    ? 'glass-nav-btn-active text-white'
+                    ? 'glass-nav-btn-active text-white shadow-[0_0_20px_rgba(255,107,74,0.4)]'
                     : 'text-neutral-300 hover:text-white hover:bg-white/10'
                 }`}
               >
