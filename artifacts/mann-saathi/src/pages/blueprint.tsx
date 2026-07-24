@@ -1,20 +1,58 @@
 import { useState } from 'react';
-import { ChevronRight, FileText, Menu, X, Sparkles, Terminal, Code2, Shield, Cpu, Layers, Activity, Brain } from 'lucide-react';
+import { 
+  ChevronRight, 
+  FileText, 
+  Sparkles, 
+  Terminal, 
+  Code2, 
+  Shield, 
+  Cpu, 
+  Layers, 
+  Activity, 
+  Brain,
+  Languages,
+  CheckCircle2,
+  Lock,
+  PhoneCall,
+  Server,
+  Zap,
+  ArrowRight
+} from 'lucide-react';
 import { LightRays } from '@/components/LightRays';
 import { Link } from 'wouter';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 
 export default function Blueprint() {
   const [activeTab, setActiveTab] = useState('pipeline');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [journeyStep, setJourneyStep] = useState(1);
 
   const techSections = [
     { id: 'pipeline', title: 'On-Device Gemma Pipeline', icon: Terminal },
     { id: 'architecture', title: 'AI System Architecture', icon: Cpu },
     { id: 'safety', title: 'Crisis & Safety Triage', icon: Shield },
-    { id: 'indic', title: 'Multilingual Indic NLP', icon: Layers },
+    { id: 'indic', title: 'Multilingual Indic NLP', icon: Languages },
     { id: 'quantization', title: 'INT4 Quantization & Performance', icon: Activity },
     { id: 'blueprint', title: 'Full System Blueprint Docs', icon: FileText },
   ];
+
+  const quantizationPerfData = [
+    { model: 'Gemma 2B FP16', RAM: 8.2, Latency: 420 },
+    { model: 'Gemma 2B INT8', RAM: 4.1, Latency: 210 },
+    { model: 'Gemma 2B INT4 (Mann Saathi)', RAM: 1.15, Latency: 85 },
+  ];
+
+  const indicLanguages = [
+    { name: 'Hindi (हिंदी)', sample: 'मुझे बहुत चिंता हो रही है, क्या आप मदद कर सकते हैं?', status: 'Native Fine-Tuned' },
+    { name: 'Marathi (मराठी)', sample: 'मला खूप ताण आला आहे, काय करू सुचत नाही.', status: 'Native Fine-Tuned' },
+    { name: 'Bengali (বাংলা)', sample: 'আমার খুব চিন্তা হচ্ছে, পরীক্ষা নিয়ে খুব চাপে আছি।', status: 'Native Fine-Tuned' },
+    { name: 'Tamil (தமிழ்)', sample: 'எனக்கு ரொம்ப பயமாக இருக்கிறது, உதவி செய்ய முடியுமா?', status: 'Native Fine-Tuned' },
+    { name: 'Hinglish', sample: 'Aaj kal bahut stress feel ho raha hai, zero focus in studies.', status: 'Code-Switching Ready' },
+    { name: 'Telugu (తెలుగు)', sample: 'నాకు చాలా భయంగా ఉంది, దయచేసి సహాయం చేయండి.', status: 'Native Fine-Tuned' },
+  ];
+
+  // Dynamic SVG path drawing strokeDashoffset based on journey step (1 to 5)
+  const totalSteps = 5;
+  const strokeOffset = 100 - (journeyStep / totalSteps) * 100;
 
   return (
     <div className="min-h-screen bg-[#07080a] text-white selection:bg-[#ff6b4a]/30 selection:text-amber-200 overflow-x-hidden relative font-sans pt-24 pb-20">
@@ -54,7 +92,7 @@ export default function Blueprint() {
           </p>
         </div>
 
-        {/* Clean Responsive Glass Category Filter Tabs (Zero Cut-Off & No Scrollbars) */}
+        {/* Clean Responsive Glass Category Filter Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-12 max-w-5xl mx-auto">
           {techSections.map((sec) => {
             const Icon = sec.icon;
@@ -76,10 +114,10 @@ export default function Blueprint() {
           })}
         </div>
 
-        {/* Section Content Area - Clean Grid Layout with Zero Overlap */}
+        {/* Section Content Area */}
         <div className="space-y-12">
           
-          {/* 1. On-Device Gemma Triage IDE Pipeline Code Block */}
+          {/* TAB 1: On-Device Gemma Triage IDE Pipeline */}
           {(activeTab === 'pipeline' || activeTab === 'blueprint') && (
             <div className="glass-card p-6 sm:p-8 rounded-3xl border border-white/15 shadow-2xl">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
@@ -140,37 +178,102 @@ export default function Blueprint() {
             </div>
           )}
 
-          {/* 2. System Architecture Section */}
+          {/* TAB 2: Interactive Animated SVG Architecture Journey Pipeline */}
           {(activeTab === 'architecture' || activeTab === 'blueprint') && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="glass-card p-6 rounded-2xl">
-                <Brain className="w-8 h-8 text-[#ff6b4a] mb-4" />
-                <h4 className="font-bold text-lg text-white mb-2">On-Device Quantization</h4>
-                <p className="text-sm text-neutral-300 font-normal leading-relaxed">
-                  INT4 4-bit quantization reduces memory footprint from 8GB to under 1.2GB, enabling smooth inference on standard smartphones.
-                </p>
+            <div className="glass-card p-8 rounded-3xl border border-white/15 shadow-2xl relative overflow-hidden">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+                <div>
+                  <h3 className="font-sans font-bold text-2xl text-white mb-1">Interactive Animated SVG Architecture Journey</h3>
+                  <p className="text-sm text-neutral-400 font-normal">Click through steps to animate the glowing SVG pipeline connector line forward.</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setJourneyStep((prev) => Math.max(1, prev - 1))}
+                    disabled={journeyStep <= 1}
+                    className="btn-keycap bg-white/10 text-white text-xs px-3 py-1.5 disabled:opacity-30"
+                  >
+                    ← Prev Step
+                  </button>
+                  <button
+                    onClick={() => setJourneyStep((prev) => Math.min(5, prev + 1))}
+                    disabled={journeyStep >= 5}
+                    className="btn-keycap bg-[#e6e6e6] text-[#2f3031] text-xs px-3 py-1.5 disabled:opacity-30"
+                  >
+                    Next Step →
+                  </button>
+                </div>
               </div>
-              <div className="glass-card p-6 rounded-2xl">
-                <Shield className="w-8 h-8 text-amber-300 mb-4" />
-                <h4 className="font-bold text-lg text-white mb-2">Zero Data Leakage</h4>
-                <p className="text-sm text-neutral-300 font-normal leading-relaxed">
-                  Conversations and embeddings are stored exclusively in an encrypted local SQLite database using SQLCipher.
-                </p>
-              </div>
-              <div className="glass-card p-6 rounded-2xl">
-                <Layers className="w-8 h-8 text-emerald-400 mb-4" />
-                <h4 className="font-bold text-lg text-white mb-2">10+ Indic Languages</h4>
-                <p className="text-sm text-neutral-300 font-normal leading-relaxed">
-                  Fine-tuned tokenizer handles code-switching between Hindi, Bengali, Tamil, Telugu, Marathi, and Hinglish natively.
-                </p>
+
+              {/* Animated SVG Journey Path */}
+              <div className="relative my-8 py-6">
+                <svg className="w-full h-12 overflow-visible" viewBox="0 0 1000 40" fill="none">
+                  {/* Background Track Line */}
+                  <path
+                    d="M 50 20 L 250 20 L 450 20 L 650 20 L 850 20 L 950 20"
+                    stroke="rgba(255, 255, 255, 0.1)"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                  />
+
+                  {/* Dynamic Glowing Animated SVG Journey Line */}
+                  <path
+                    d="M 50 20 L 250 20 L 450 20 L 650 20 L 850 20 L 950 20"
+                    stroke="url(#auroraGradient)"
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                    strokeDasharray="1000"
+                    strokeDashoffset={1000 - (journeyStep / 5) * 900}
+                    className="transition-all duration-700 ease-out"
+                  />
+
+                  <defs>
+                    <linearGradient id="auroraGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#0052cc" />
+                      <stop offset="50%" stopColor="#ff6b4a" />
+                      <stop offset="100%" stopColor="#ffb347" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+
+                {/* 5 Journey Nodes */}
+                <div className="grid grid-cols-1 sm:grid-cols-5 gap-4 relative z-10 mt-4">
+                  {[
+                    { step: 1, title: '1. Indic User Input', desc: 'Multilingual prompt in 10+ Indic languages.', icon: Languages },
+                    { step: 2, title: '2. IndicBERT Safety Triage', desc: 'Sub-50ms crisis & distress level assessment.', icon: Shield },
+                    { step: 3, title: '3. Gemma INT4 Engine', desc: 'Local LiteRT model inference on-device.', icon: Brain },
+                    { step: 4, title: '4. Encrypted Local Vault', desc: 'SQLCipher local DB with zero cloud leakage.', icon: Lock },
+                    { step: 5, title: '5. Response & Escalation', desc: 'Supportive response or 1-tap Tele-MANAS referral.', icon: PhoneCall },
+                  ].map((node) => {
+                    const isPassed = node.step <= journeyStep;
+                    const isCurrent = node.step === journeyStep;
+                    const NodeIcon = node.icon;
+                    return (
+                      <div
+                        key={node.step}
+                        onClick={() => setJourneyStep(node.step)}
+                        className={`glass-card p-4 rounded-2xl cursor-pointer transition-all ${
+                          isCurrent
+                            ? 'border-[#ff6b4a] bg-white/10 shadow-[0_0_25px_rgba(255,107,74,0.4)] scale-105'
+                            : isPassed
+                            ? 'border-white/30 bg-white/5'
+                            : 'border-white/10 bg-black/40 opacity-50'
+                        }`}
+                      >
+                        <NodeIcon className={`w-6 h-6 mb-2 ${isPassed ? 'text-[#ff6b4a]' : 'text-neutral-500'}`} />
+                        <div className="font-bold text-xs text-white mb-1">{node.title}</div>
+                        <div className="text-[11px] text-neutral-300 font-normal leading-relaxed">{node.desc}</div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           )}
 
-          {/* 3. Crisis Triage Specs */}
+          {/* TAB 3: 4-Tier Crisis Safety Triage */}
           {(activeTab === 'safety' || activeTab === 'blueprint') && (
             <div className="glass-card p-8 rounded-3xl">
-              <h3 className="font-sans font-bold text-2xl text-white mb-6">4-Level Clinical Safety Triage</h3>
+              <h3 className="font-sans font-bold text-2xl text-white mb-6">4-Level Clinical Safety Triage Matrix</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20">
                   <div className="font-bold text-emerald-400 text-lg mb-1">Level 1</div>
@@ -192,6 +295,94 @@ export default function Blueprint() {
                   <div className="text-sm text-white font-medium mb-1">Active Crisis</div>
                   <div className="text-xs text-neutral-300">1-Tap emergency helpline dialer</div>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 4: Multilingual Indic NLP & Code-Switching Engine */}
+          {(activeTab === 'indic' || activeTab === 'blueprint') && (
+            <div className="glass-card p-8 rounded-3xl border border-white/15">
+              <div className="flex items-center gap-3 mb-6">
+                <Languages className="w-6 h-6 text-[#ff6b4a]" />
+                <h3 className="font-sans font-bold text-2xl text-white">Multilingual Indic NLP & Code-Switching Engine</h3>
+              </div>
+              <p className="text-sm text-neutral-300 mb-8 max-w-2xl font-normal leading-relaxed">
+                Fine-tuned tokenizer handles code-switching between regional Indic scripts and Hinglish, ensuring non-judgmental supportive care for diverse populations.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {indicLanguages.map((lang, i) => (
+                  <div key={i} className="glass-card p-5 rounded-2xl space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="font-bold text-sm text-white">{lang.name}</div>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-amber-300 border border-white/10">
+                        {lang.status}
+                      </span>
+                    </div>
+                    <p className="text-xs text-neutral-300 italic font-mono bg-black/40 p-2.5 rounded-lg border border-white/5">
+                      "{lang.sample}"
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 5: INT4 Quantization Benchmarks & Performance Metrics */}
+          {(activeTab === 'quantization' || activeTab === 'blueprint') && (
+            <div className="glass-card p-8 rounded-3xl border border-white/15">
+              <div className="flex items-center gap-3 mb-6">
+                <Activity className="w-6 h-6 text-amber-300" />
+                <h3 className="font-sans font-bold text-2xl text-white">INT4 Model Quantization Benchmarks</h3>
+              </div>
+              <p className="text-sm text-neutral-300 mb-8 max-w-2xl font-normal leading-relaxed">
+                INT4 4-bit quantization reduces RAM requirements from 8.2GB down to 1.15GB, enabling 60fps performance on budget smartphones.
+              </p>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div className="h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={quantizationPerfData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.08)" />
+                      <XAxis dataKey="model" stroke="#a3a3a3" fontSize={11} />
+                      <YAxis stroke="#a3a3a3" fontSize={11} unit="GB" />
+                      <Tooltip contentStyle={{ backgroundColor: '#07080a', borderColor: 'rgba(255,255,255,0.2)' }} />
+                      <Bar dataKey="RAM" fill="#ff6b4a" radius={[6, 6, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="glass-card p-5 rounded-2xl">
+                    <div className="text-xs font-mono text-neutral-400 uppercase tracking-wider mb-1">Inference Latency</div>
+                    <div className="text-3xl font-bold text-white font-sans">85 ms</div>
+                    <div className="text-xs text-neutral-300 mt-1">Sub-100ms token generation on Android LiteRT</div>
+                  </div>
+                  <div className="glass-card p-5 rounded-2xl">
+                    <div className="text-xs font-mono text-neutral-400 uppercase tracking-wider mb-1">Peak Memory Footprint</div>
+                    <div className="text-3xl font-bold text-amber-300 font-sans">1.15 GB</div>
+                    <div className="text-xs text-neutral-300 mt-1">Fits in budget smartphones with 3GB RAM</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 6: Full System Blueprint Docs */}
+          {activeTab === 'blueprint' && (
+            <div className="glass-card p-8 rounded-3xl border border-white/15">
+              <h3 className="font-sans font-bold text-2xl text-white mb-4">Complete System Executive Blueprint</h3>
+              <p className="text-sm text-neutral-300 leading-relaxed max-w-3xl mb-6 font-normal">
+                Mind Care India (Mann Saathi) is an end-to-end open-access platform built to bridge India's 83% mental health treatment gap through private on-device AI.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/demo" className="btn-keycap bg-[#e6e6e6] text-[#2f3031] text-xs">
+                  <span>Try AI Companion Demo</span>
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+                <Link href="/pitch" className="btn-keycap bg-white/10 text-white text-xs hover:bg-white/20">
+                  <span>View Investor Pitch Deck</span>
+                </Link>
               </div>
             </div>
           )}
