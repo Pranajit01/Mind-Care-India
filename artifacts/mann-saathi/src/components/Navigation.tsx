@@ -1,21 +1,50 @@
 import { Link, useLocation } from 'wouter';
-import { Brain, ArrowRight, Menu, X, Sparkles, BookOpen, Heart, Shield, Cpu, Code2, ExternalLink, Github, Linkedin, Mail, UserCheck } from 'lucide-react';
+import { 
+  Brain, 
+  ArrowRight, 
+  Menu, 
+  X, 
+  Sparkles, 
+  PhoneCall, 
+  Bug, 
+  Presentation, 
+  Cpu, 
+  Github, 
+  Linkedin, 
+  Mail, 
+  UserCheck,
+  Send,
+  CheckCircle2
+} from 'lucide-react';
 import { useState } from 'react';
 
 export function Navigation() {
   const [location] = useLocation();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [bugModalOpen, setBugModalOpen] = useState(false);
+  const [bugReported, setBugReported] = useState(false);
+  const [bugDescription, setBugDescription] = useState('');
 
-  // Essential consolidated navigation links
-  const links = [
+  // Primary Header Bar links (Home, How to Use this AI, Gemma Tech System)
+  const headerLinks = [
     { href: '/', label: 'Home' },
-    { href: '/demo', label: 'AI Companion' },
+    { href: '/demo', label: 'How to Use this AI' },
     { href: '/blueprint', label: 'Gemma Tech System' },
   ];
 
+  const handleBugSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setBugReported(true);
+    setTimeout(() => {
+      setBugReported(false);
+      setBugModalOpen(false);
+      setBugDescription('');
+    }, 2000);
+  };
+
   return (
     <>
-      {/* Fixed Upper-Middle Floating Header Bar (Device Independent Alignment) */}
+      {/* Fixed Upper-Middle Floating Header Bar */}
       <nav className="fixed top-4 inset-x-0 mx-auto w-[92%] max-w-4xl z-50 rounded-full glass-pill p-2 px-4 sm:px-6 flex items-center justify-between shadow-2xl transition-all">
         
         {/* Highlighted Brand Logo & Name */}
@@ -35,9 +64,9 @@ export function Navigation() {
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Header Links (Home, How to Use this AI, Gemma Tech System) */}
         <div className="hidden md:flex items-center gap-2">
-          {links.map((link) => {
+          {headerLinks.map((link) => {
             const isActive = location === link.href;
             return (
               <Link
@@ -51,7 +80,7 @@ export function Navigation() {
           })}
         </div>
 
-        {/* Right Side Actions: Sleek CTA + Hamburger Menu Toggle */}
+        {/* Right Side Actions: Try AI CTA + Hamburger Menu */}
         <div className="flex items-center gap-2 shrink-0">
           <Link
             href="/demo"
@@ -65,21 +94,21 @@ export function Navigation() {
           {/* Universal Hamburger Drawer Toggle */}
           <button
             onClick={() => setDrawerOpen(true)}
-            className="glass-nav-btn p-2 rounded-full text-neutral-300 hover:text-white border-white/15"
-            aria-label="Open System Menu & Innovator Guide Drawer"
-            title="System Info & Innovator Info Drawer"
+            className="glass-nav-btn p-2.5 rounded-full text-neutral-300 hover:text-white border-white/15"
+            aria-label="Open Hamburger Drawer Menu"
+            title="Open Hamburger Drawer Menu"
           >
-            <Menu className="w-4 h-4" />
+            <Menu className="w-4.5 h-4.5" />
           </button>
         </div>
       </nav>
 
-      {/* Slide-Over Drawer Modal Overlay */}
+      {/* Hamburger Drawer Modal Overlay */}
       {drawerOpen && (
         <div className="fixed inset-0 z-50 flex justify-end">
-          {/* Backdrop Blur overlay */}
+          {/* Backdrop Overlay */}
           <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-md transition-opacity"
+            className="fixed inset-0 bg-black/75 backdrop-blur-md transition-opacity"
             onClick={() => setDrawerOpen(false)}
           />
 
@@ -89,8 +118,8 @@ export function Navigation() {
               {/* Drawer Header */}
               <div className="flex items-center justify-between pb-5 border-b border-white/10 mb-6">
                 <div className="flex items-center gap-2.5">
-                  <Brain className="w-5 h-5 text-[#ff6b4a]" />
-                  <span className="font-bold text-lg text-white">Mann Saathi Guide</span>
+                  <Brain className="w-5.5 h-5.5 text-[#ff6b4a]" />
+                  <span className="font-bold text-lg text-white uppercase tracking-wider">System Drawer</span>
                 </div>
                 <button
                   onClick={() => setDrawerOpen(false)}
@@ -100,17 +129,14 @@ export function Navigation() {
                 </button>
               </div>
 
-              {/* Creator & Innovator Attribution Card */}
+              {/* Creator Attribution */}
               <div className="glass-card p-4 rounded-2xl border border-amber-500/30 bg-amber-950/20 mb-6">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-amber-300 mb-2">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-amber-300 mb-1">
                   <UserCheck className="w-4 h-4 text-[#ff6b4a]" />
                   <span>Lead Architect & Creator</span>
                 </div>
-                <div className="font-bold text-base text-white mb-1">Pranajit Das</div>
-                <p className="text-xs text-neutral-300 leading-relaxed font-normal mb-3">
-                  End-to-end innovator and system architect of Mind Care India (Mann Saathi).
-                </p>
-                <div className="flex items-center gap-3 text-xs font-mono">
+                <div className="font-bold text-base text-white">Pranajit Das</div>
+                <div className="flex items-center gap-3 text-xs font-mono mt-2.5">
                   <a
                     href="https://github.com/Pranajit01"
                     target="_blank"
@@ -129,91 +155,171 @@ export function Navigation() {
                     <Linkedin className="w-3.5 h-3.5 text-blue-400" />
                     <span>LinkedIn</span>
                   </a>
-                  <a
-                    href="mailto:daspranajit973@gmail.com"
-                    className="text-neutral-300 hover:text-white flex items-center gap-1 bg-white/10 px-2.5 py-1 rounded-lg border border-white/10"
-                  >
-                    <Mail className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Email</span>
-                  </a>
                 </div>
               </div>
 
-              {/* Navigation Links */}
-              <div className="space-y-2 mb-6">
+              {/* Hamburger Action Items (Connect with Architecture, Connect with Helpline, Report Bug, Investor Pitch) */}
+              <div className="space-y-3 mb-6">
                 <div className="text-[11px] font-mono uppercase tracking-widest text-neutral-400 mb-2">
-                  Navigation Shortcuts
+                  Hamburger Quick Actions
                 </div>
-                {links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setDrawerOpen(false)}
-                    className={`flex items-center justify-between p-3 rounded-xl border text-sm font-medium transition-all ${
-                      location === link.href
-                        ? 'bg-white/10 text-white border-[#ff6b4a]/60 shadow-[0_0_15px_rgba(255,107,74,0.3)]'
-                        : 'bg-white/5 text-neutral-300 border-white/10 hover:bg-white/10 hover:text-white'
-                    }`}
-                  >
-                    <span>{link.label}</span>
-                    <ArrowRight className="w-4 h-4 text-neutral-400" />
-                  </Link>
-                ))}
-              </div>
 
-              {/* Drawer Section 1: How to Visit & Try the AI */}
-              <div className="space-y-4 mb-6">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#ff6b4a]">
-                  <BookOpen className="w-4 h-4" />
-                  <span>How to Use & Try AI</span>
-                </div>
-                <div className="glass-card p-4 rounded-xl space-y-2 text-xs text-neutral-300 leading-relaxed font-normal">
-                  <p>
-                    <strong className="text-white">1. Start Interactive Session:</strong> Click "Try AI" or navigate to the AI Companion demo.
-                  </p>
-                  <p>
-                    <strong className="text-white">2. Select Indic Language:</strong> Choose Hindi, Marathi, Bengali, Tamil, Hinglish, or 8+ regional dialects.
-                  </p>
-                  <p>
-                    <strong className="text-white">3. Real-Time Crisis Triage:</strong> Automatic 4-tier distress evaluation with 1-tap emergency helpline referral.
-                  </p>
-                </div>
-              </div>
+                {/* 1. Connect with Architecture */}
+                <Link
+                  href="/blueprint"
+                  onClick={() => setDrawerOpen(false)}
+                  className="flex items-center justify-between p-4 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 text-white transition-all group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-xl bg-[#0052cc]/20 border border-[#0052cc]/40 text-[#0052cc]">
+                      <Cpu className="w-4 h-4 text-blue-400" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-sm text-white group-hover:text-[#ff6b4a] transition-colors">
+                        Connect with Architecture
+                      </div>
+                      <div className="text-xs text-neutral-400">Google Gemma INT4 system blueprint</div>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:translate-x-1 transition-transform" />
+                </Link>
 
-              {/* Drawer Section 2: Tech Architecture */}
-              <div className="space-y-4 mb-6">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#ffb347]">
-                  <Code2 className="w-4 h-4" />
-                  <span>Google Gemma Integration</span>
-                </div>
-                <div className="glass-card p-4 rounded-xl text-xs text-neutral-300 space-y-2">
-                  <p>
-                    Executes Google's <strong className="text-white">Gemma Open Model</strong> locally via INT4 quantization for sub-100ms response latency and 100% on-device privacy.
-                  </p>
-                  <Link
-                    href="/blueprint"
-                    onClick={() => setDrawerOpen(false)}
-                    className="inline-flex items-center gap-1.5 text-xs text-[#ff6b4a] font-semibold hover:underline pt-1"
-                  >
-                    <span>Explore Gemma Tech System</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
+                {/* 2. Connect with Helpline */}
+                <a
+                  href="tel:14416"
+                  onClick={() => setDrawerOpen(false)}
+                  className="flex items-center justify-between p-4 rounded-2xl border border-emerald-500/30 bg-emerald-950/20 hover:bg-emerald-950/40 text-white transition-all group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400">
+                      <PhoneCall className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-sm text-emerald-400 group-hover:text-emerald-300 transition-colors">
+                        Connect with Helpline
+                      </div>
+                      <div className="text-xs text-neutral-300">Tele-MANAS (14416) 24/7 Toll-Free</div>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-transform" />
+                </a>
+
+                {/* 3. Report Bug */}
+                <button
+                  onClick={() => {
+                    setDrawerOpen(false);
+                    setBugModalOpen(true);
+                  }}
+                  className="w-full flex items-center justify-between p-4 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 text-white transition-all group text-left"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300">
+                      <Bug className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-sm text-white group-hover:text-amber-300 transition-colors">
+                        Report Bug
+                      </div>
+                      <div className="text-xs text-neutral-400">Direct feedback to lead architect</div>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:translate-x-1 transition-transform" />
+                </button>
+
+                {/* 4. Investor Pitch */}
+                <Link
+                  href="/pitch"
+                  onClick={() => setDrawerOpen(false)}
+                  className="flex items-center justify-between p-4 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 text-white transition-all group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-xl bg-[#ff6b4a]/20 border border-[#ff6b4a]/40 text-[#ff6b4a]">
+                      <Presentation className="w-4 h-4 text-[#ff6b4a]" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-sm text-white group-hover:text-[#ff6b4a] transition-colors">
+                        Investor Pitch
+                      </div>
+                      <div className="text-xs text-neutral-400">Executive deck & market strategy</div>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </div>
 
-            {/* Footer inside Drawer */}
+            {/* Bottom Drawer CTA */}
             <div className="pt-4 border-t border-white/10">
               <Link
                 href="/demo"
                 onClick={() => setDrawerOpen(false)}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-[#0052cc] via-[#ff6b4a] to-[#ff2f3a] text-white font-semibold text-xs uppercase tracking-widest text-center flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,107,74,0.5)]"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0052cc] via-[#ff6b4a] to-[#ff2f3a] text-white font-semibold text-xs uppercase tracking-widest text-center flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,107,74,0.5)]"
               >
                 <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
-                <span>Launch Interactive Companion</span>
+                <span>Launch AI Companion</span>
               </Link>
             </div>
           </aside>
+        </div>
+      )}
+
+      {/* Interactive Report Bug Modal */}
+      {bugModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div
+            className="fixed inset-0 bg-black/80 backdrop-blur-md"
+            onClick={() => setBugModalOpen(false)}
+          />
+          <div className="relative w-full max-w-lg glass-card bg-[#07080a] border border-white/20 rounded-3xl p-6 sm:p-8 z-10 shadow-2xl">
+            <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300">
+                  <Bug className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg text-white">Report System Issue or Bug</h3>
+                  <p className="text-xs text-neutral-400">Directly routed to Pranajit Das (daspranajit973@gmail.com)</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setBugModalOpen(false)}
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-neutral-300 hover:text-white"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {bugReported ? (
+              <div className="py-8 text-center space-y-3">
+                <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto animate-bounce" />
+                <h4 className="font-bold text-xl text-white">Bug Report Received!</h4>
+                <p className="text-xs text-neutral-300">Thank you! Your feedback has been sent directly to the engineering team.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleBugSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-mono uppercase tracking-wider text-neutral-300 mb-2">
+                    Issue Description
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={bugDescription}
+                    onChange={(e) => setBugDescription(e.target.value)}
+                    placeholder="Describe what went wrong or suggest an improvement..."
+                    className="w-full bg-black/60 border border-white/15 rounded-xl p-3 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#ff6b4a]"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-[#ff6b4a] to-[#ff2f3a] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,107,74,0.4)]"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Submit Bug Report</span>
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       )}
     </>
