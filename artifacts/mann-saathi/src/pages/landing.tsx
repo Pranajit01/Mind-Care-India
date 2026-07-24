@@ -18,11 +18,23 @@ import {
   Sparkles,
   ChevronRight,
   Globe,
-  Radio
+  Radio,
+  PhoneCall,
+  Award,
+  FileText,
+  CheckCircle2,
+  Sliders
 } from 'lucide-react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 
 export default function Landing() {
+  const impactData = [
+    { year: 'Year 1', users: 100, district: 5 },
+    { year: 'Year 2', users: 1000, district: 25 },
+    { year: 'Year 3', users: 10000, district: 150 },
+    { year: 'Year 5', users: 100000, district: 750 },
+  ];
+
   const treatmentGapData = [
     { condition: 'Depression', gap: 83 },
     { condition: 'Schizophrenia', gap: 86 },
@@ -44,8 +56,8 @@ export default function Landing() {
     <div className="min-h-screen bg-[#030303] text-foreground selection:bg-purple-500/30 selection:text-purple-200 overflow-x-hidden">
       
       {/* Floating Glass Navigation Pill */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[92%] max-w-2xl z-50 rounded-full glass-pill p-2 px-4 sm:px-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[92%] max-w-3xl z-50 rounded-full glass-pill p-2 px-4 sm:px-6 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2.5 group">
           <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-cyan-400 flex items-center justify-center p-0.5 shadow-[0_0_15px_rgba(139,92,246,0.6)]">
             <div className="w-full h-full bg-[#0a0a0a] rounded-full flex items-center justify-center">
               <Brain className="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform" />
@@ -56,16 +68,17 @@ export default function Landing() {
           </span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-6 text-xs uppercase tracking-wider font-semibold text-neutral-400">
+        <div className="hidden md:flex items-center gap-5 text-xs uppercase tracking-wider font-semibold text-neutral-400">
           <Link href="/demo" className="hover:text-purple-400 transition-colors">Demo</Link>
           <Link href="/blueprint" className="hover:text-purple-400 transition-colors">Blueprint</Link>
           <Link href="/architecture" className="hover:text-purple-400 transition-colors">Architecture</Link>
           <Link href="/personas" className="hover:text-purple-400 transition-colors">Personas</Link>
+          <Link href="/pitch" className="hover:text-purple-400 transition-colors">Pitch Deck</Link>
         </div>
 
         {/* Shiny CTA Button */}
         <Link href="/demo" className="relative group inline-flex items-center justify-center p-[1px] rounded-full overflow-hidden">
-          <span className="absolute inset-0 bg-[conic-gradient(from_0deg,#transparent_0%,#8b5cf6_40%,#06b6d4_50%,#transparent_60%)] animate-spin-conic group-hover:opacity-100 transition-opacity" />
+          <span className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0%,#8b5cf6_40%,#06b6d4_50%,transparent_60%)] animate-spin-conic group-hover:opacity-100 transition-opacity" />
           <span className="relative px-4 py-1.5 rounded-full bg-[#0a0a0a] text-xs font-semibold text-white group-hover:bg-purple-950/40 transition-colors flex items-center gap-1.5">
             Launch AI
             <ArrowRight className="w-3.5 h-3.5 text-purple-400 group-hover:translate-x-0.5 transition-transform" />
@@ -76,10 +89,10 @@ export default function Landing() {
       {/* Hero Section */}
       <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         
-        {/* Floating Ambient Orbs */}
-        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/25 blur-[140px] rounded-full pointer-events-none animate-float-orb" />
-        <div className="absolute top-[300px] left-[-100px] w-[450px] h-[450px] bg-cyan-500/15 blur-[130px] rounded-full pointer-events-none animate-float-orb" style={{ animationDelay: '3s' }} />
-        <div className="absolute top-[200px] right-[-100px] w-[400px] h-[400px] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none animate-float-orb" style={{ animationDelay: '5s' }} />
+        {/* Animated Background Glowing Orbs */}
+        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-purple-600/25 blur-[140px] rounded-full pointer-events-none animate-float-orb" />
+        <div className="absolute top-[320px] left-[-120px] w-[500px] h-[500px] bg-cyan-500/15 blur-[130px] rounded-full pointer-events-none animate-float-orb" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-[220px] right-[-120px] w-[450px] h-[450px] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none animate-float-orb" style={{ animationDelay: '5s' }} />
 
         <div className="relative max-w-5xl mx-auto text-center z-10">
           
@@ -224,6 +237,72 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* 4-Tier Safety Level & Crisis Matrix Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/40 border border-purple-500/30 text-purple-300 text-xs font-mono uppercase tracking-widest mb-4">
+            Clinical Safety Matrix
+          </div>
+          <h2 className="font-serif-editorial text-4xl sm:text-5xl text-white mb-4">
+            4-Tier Safety & Crisis Escalation System
+          </h2>
+          <p className="text-neutral-400 text-lg">
+            Multi-signal safety classifier automatically routes user distress states from self-guided CBT tools up to immediate 1-tap emergency helpline connections.
+          </p>
+        </div>
+
+        {/* 4-Tier Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {[
+            { level: 'Level 1', label: 'Mild Stress', color: 'border-emerald-500/30 bg-emerald-950/20', textColor: 'text-emerald-400', action: 'Gemma CBT companion & journal prompts' },
+            { level: 'Level 2', label: 'Moderate Anxiety', color: 'border-cyan-500/30 bg-cyan-950/20', textColor: 'text-cyan-400', action: 'Interactive 4-7-8 breathwork & mood logs' },
+            { level: 'Level 3', label: 'High Distress', color: 'border-purple-500/30 bg-purple-950/20', textColor: 'text-purple-400', action: 'Tele-MANAS counselor booking & SMS alert' },
+            { level: 'Level 4', label: 'Active Crisis', color: 'border-red-500/30 bg-red-950/20', textColor: 'text-red-400', action: '1-Tap emergency helpline dialer & protocol' },
+          ].map((stage) => (
+            <div key={stage.level} className={`glass-card ${stage.color} p-6 rounded-2xl text-center`}>
+              <Activity className={`w-8 h-8 ${stage.textColor} mx-auto mb-3`} />
+              <div className={`font-serif-editorial text-2xl ${stage.textColor} mb-1`}>{stage.level}</div>
+              <div className="text-sm font-semibold text-white mb-2">{stage.label}</div>
+              <div className="text-xs text-neutral-400 leading-relaxed">{stage.action}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* 3-Step Protocol Pipeline */}
+        <div className="glass-card p-8 rounded-3xl border border-white/10">
+          <h3 className="font-serif-editorial text-2xl text-white mb-8 text-center">Crisis Response Protocol Pipeline</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center mb-4 text-purple-400 font-mono font-bold text-lg">
+                1
+              </div>
+              <h4 className="font-semibold text-white mb-2">Real-Time Distress Detection</h4>
+              <p className="text-sm text-neutral-400 leading-relaxed">
+                DistilBERT & Indic BERT safety classifiers analyze every voice and text message for distress signals with sub-50ms inference.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mb-4 text-cyan-400 font-mono font-bold text-lg">
+                2
+              </div>
+              <h4 className="font-semibold text-white mb-2">Immediate Grounding Intervention</h4>
+              <p className="text-sm text-neutral-400 leading-relaxed">
+                Validates emotions, provides non-judgmental CBT grounding techniques, and remains present without leaving the user isolated.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mb-4 text-emerald-400 font-mono font-bold text-lg">
+                3
+              </div>
+              <h4 className="font-semibold text-white mb-2">Direct Human Handoff</h4>
+              <p className="text-sm text-neutral-400 leading-relaxed">
+                One-touch seamless connection to Tele-MANAS (14416), NIMHANS (080-26995000), or Vandrevala Foundation (+91 9999 666 555).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Feature Grid (Synapse 3-Column Glass Grid) */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -288,6 +367,88 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Government & Healthcare Infrastructure Integrations Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="font-serif-editorial text-4xl sm:text-5xl text-white mb-4">
+            Integrated with National Infrastructure
+          </h2>
+          <p className="text-neutral-400 text-lg">
+            Strengthening India's public health ecosystem by connecting digital AI companion support directly with established crisis networks.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { name: 'NIMHANS', role: 'Clinical Guidance & Validation Partner', icon: Brain, accent: 'text-purple-400' },
+            { name: 'Tele-MANAS', role: 'Government Crisis Helpline Integration (14416)', icon: PhoneCall, accent: 'text-cyan-400' },
+            { name: 'Vandrevala Foundation', role: 'Emergency Crisis Referral Partner', icon: Shield, accent: 'text-emerald-400' },
+            { name: 'ASHA Network', role: 'Community Grassroots Distribution', icon: Users, accent: 'text-purple-300' },
+          ].map((partner) => (
+            <div key={partner.name} className="glass-card p-6 rounded-2xl text-center">
+              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4">
+                <partner.icon className={`w-7 h-7 ${partner.accent}`} />
+              </div>
+              <h3 className="font-serif-editorial text-2xl text-white mb-1">{partner.name}</h3>
+              <p className="text-xs text-neutral-400 leading-relaxed">{partner.role}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Growth Impact & Scalability Chart Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/40 border border-purple-500/30 text-purple-300 text-xs font-mono uppercase tracking-widest mb-4">
+              Growth Projection
+            </div>
+            <h2 className="font-serif-editorial text-4xl sm:text-5xl text-white mb-6">
+              Scalable Impact Across 750+ Districts
+            </h2>
+            <p className="text-neutral-400 text-base leading-relaxed mb-6">
+              Mind Care India is architected for rapid scaling across Tier-2/3 cities and rural panchayats. By removing cloud token costs and relying on on-device Gemma execution, district healthcare deployment costs drop by over 90%.
+            </p>
+            <div className="space-y-3">
+              {[
+                'Zero recurring cloud GPU inference cost per chat session',
+                'Seamless deployment via state health department partnerships',
+                'ASHA worker offline tablet distribution for rural screening'
+              ].map((point, idx) => (
+                <div key={idx} className="flex items-center gap-3 text-sm text-neutral-300">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>{point}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="glass-card p-8 rounded-3xl">
+            <h3 className="font-serif-editorial text-2xl text-white mb-6">User Adoption & District Deployment</h3>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={impactData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <defs>
+                    <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.6}/>
+                      <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                  <XAxis dataKey="year" stroke="#737373" fontSize={12} />
+                  <YAxis stroke="#737373" fontSize={12} />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: '#0a0a0a', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
+                    labelStyle={{ color: '#ffffff' }}
+                  />
+                  <Area type="monotone" dataKey="district" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorUsers)" name="Districts Covered" />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Code & IDE System Integration Block */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative">
         <div className="text-center max-w-2xl mx-auto mb-12">
@@ -342,6 +503,34 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Call to Action (CTA) Hero Banner */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center relative">
+        <div className="glass-card p-12 sm:p-16 rounded-3xl border border-purple-500/30 relative overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-purple-600/20 blur-[100px] rounded-full pointer-events-none" />
+          
+          <h2 className="font-serif-editorial text-5xl sm:text-6xl text-white mb-6 relative z-10">
+            Join Us in Bridging India's Mental Healthcare Gap
+          </h2>
+          <p className="text-neutral-300 text-lg max-w-2xl mx-auto mb-10 font-sans relative z-10">
+            Powered by Google Gemma. Designed for 1.4 billion people. Experience the interactive live companion demo.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-5 justify-center relative z-10">
+            <Link href="/demo" className="relative group inline-flex items-center justify-center p-[1px] rounded-full overflow-hidden shadow-[0_0_30px_-5px_rgba(139,92,246,0.6)]">
+              <span className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0%,#8b5cf6_40%,#06b6d4_50%,transparent_60%)] animate-spin-conic" />
+              <span className="relative px-8 py-3.5 rounded-full bg-[#0a0a0a] text-sm font-semibold text-white group-hover:bg-[#120e24] transition-colors flex items-center gap-2">
+                <span>Try the Interactive Demo</span>
+                <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
+            <Link href="/pitch" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full glass-card text-sm font-semibold text-neutral-300 hover:text-white border border-white/10 hover:border-white/20 transition-all">
+              <FileText className="w-4 h-4 text-purple-400" />
+              <span>View Investor Pitch</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Footer (Synapse Dark Editorial Footer) */}
       <footer className="bg-[#050505] border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
@@ -356,22 +545,24 @@ export default function Landing() {
           </div>
 
           <div>
-            <h5 className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 mb-4">PLATFORM</h5>
+            <h5 className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 mb-4">PLATFORM NAV</h5>
             <ul className="space-y-2.5 text-xs text-neutral-400 font-sans">
               <li><Link href="/demo" className="hover:text-white transition-colors">AI Companion Demo</Link></li>
               <li><Link href="/blueprint" className="hover:text-white transition-colors">Technical Blueprint</Link></li>
               <li><Link href="/architecture" className="hover:text-white transition-colors">On-Device Architecture</Link></li>
               <li><Link href="/personas" className="hover:text-white transition-colors">Target Personas</Link></li>
+              <li><Link href="/pitch" className="hover:text-white transition-colors">Investor Pitch Deck</Link></li>
             </ul>
           </div>
 
           <div>
             <h5 className="text-[11px] font-mono tracking-widest uppercase text-neutral-500 mb-4">CRISIS HELPLINES</h5>
             <ul className="space-y-2.5 text-xs text-neutral-400 font-sans">
-              <li className="text-purple-400">Tele-MANAS: 14416 / 1800-891</li>
-              <li className="text-cyan-400">Vandrevala Foundation: +91 9999 666 555</li>
-              <li className="text-emerald-400">NIMHANS Helpline: 080-26995000</li>
+              <li className="text-purple-400 font-medium">Tele-MANAS: 14416 / 1800-891</li>
+              <li className="text-cyan-400 font-medium">Vandrevala Foundation: +91 9999 666 555</li>
+              <li className="text-emerald-400 font-medium">NIMHANS Helpline: 080-26995000</li>
               <li className="text-neutral-400">KIRAN: 1800-599-0019</li>
+              <li className="text-neutral-400">National Emergency: 112</li>
             </ul>
           </div>
 
