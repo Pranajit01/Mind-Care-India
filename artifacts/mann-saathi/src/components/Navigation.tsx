@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'wouter';
-import { Brain, ArrowRight, Menu, X, Sparkles, BookOpen, Heart, Shield, Cpu, Code2, ExternalLink } from 'lucide-react';
+import { Brain, ArrowRight, Menu, X, Sparkles, BookOpen, Heart, Shield, Cpu, Code2, ExternalLink, Github, Linkedin, Mail, UserCheck } from 'lucide-react';
 import { useState } from 'react';
 
 export function Navigation() {
@@ -15,18 +15,24 @@ export function Navigation() {
 
   return (
     <>
-      <nav className="sticky top-6 left-1/2 -translate-x-1/2 w-[94%] max-w-4xl z-50 mx-auto rounded-full glass-pill p-2 px-3 sm:px-5 flex items-center justify-between">
+      {/* Fixed Upper-Middle Floating Header Bar (Device Independent Alignment) */}
+      <nav className="fixed top-4 inset-x-0 mx-auto w-[92%] max-w-4xl z-50 rounded-full glass-pill p-2 px-4 sm:px-6 flex items-center justify-between shadow-2xl transition-all">
         
-        {/* Brand Logo & Name */}
-        <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#0052cc] via-[#ff6b4a] to-[#ff2f3a] flex items-center justify-center p-0.5 shadow-[0_0_15px_rgba(255,107,74,0.5)]">
+        {/* Highlighted Brand Logo & Name */}
+        <Link href="/" className="flex items-center gap-3 group shrink-0">
+          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#0052cc] via-[#ff6b4a] to-[#ff2f3a] flex items-center justify-center p-0.5 shadow-[0_0_20px_rgba(255,107,74,0.6)]">
             <div className="w-full h-full bg-[#07080a] rounded-full flex items-center justify-center">
-              <Brain className="w-4 h-4 text-[#ff6b4a] group-hover:scale-110 transition-transform" />
+              <Brain className="w-5 h-5 text-[#ff6b4a] group-hover:scale-110 transition-transform" />
             </div>
           </div>
-          <span className="font-sans font-bold text-lg text-white tracking-tight">
-            Mann Saathi
-          </span>
+          <div className="flex flex-col">
+            <span className="font-sans font-black text-lg sm:text-xl tracking-tight text-white uppercase leading-none">
+              Mann Saathi
+            </span>
+            <span className="text-[9px] font-mono tracking-widest uppercase text-[#ff6b4a] font-bold">
+              Mind Care India
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Navigation Links */}
@@ -56,12 +62,12 @@ export function Navigation() {
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
 
-          {/* Universal Hamburger Drawer Toggle (Desktop & Mobile) */}
+          {/* Universal Hamburger Drawer Toggle */}
           <button
             onClick={() => setDrawerOpen(true)}
             className="glass-nav-btn p-2 rounded-full text-neutral-300 hover:text-white border-white/15"
-            aria-label="Open System Menu & Guide Drawer"
-            title="System Info & Guide Drawer"
+            aria-label="Open System Menu & Innovator Guide Drawer"
+            title="System Info & Innovator Info Drawer"
           >
             <Menu className="w-4 h-4" />
           </button>
@@ -80,8 +86,8 @@ export function Navigation() {
           {/* Drawer Panel */}
           <aside className="relative w-full max-w-md bg-[#07080a] border-l border-white/15 h-full overflow-y-auto z-10 p-6 shadow-2xl flex flex-col justify-between">
             <div>
-              {/* Header */}
-              <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
+              {/* Drawer Header */}
+              <div className="flex items-center justify-between pb-5 border-b border-white/10 mb-6">
                 <div className="flex items-center gap-2.5">
                   <Brain className="w-5 h-5 text-[#ff6b4a]" />
                   <span className="font-bold text-lg text-white">Mann Saathi Guide</span>
@@ -94,8 +100,47 @@ export function Navigation() {
                 </button>
               </div>
 
-              {/* Navigation Links inside Drawer */}
-              <div className="space-y-2 mb-8">
+              {/* Creator & Innovator Attribution Card */}
+              <div className="glass-card p-4 rounded-2xl border border-amber-500/30 bg-amber-950/20 mb-6">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-amber-300 mb-2">
+                  <UserCheck className="w-4 h-4 text-[#ff6b4a]" />
+                  <span>Lead Architect & Creator</span>
+                </div>
+                <div className="font-bold text-base text-white mb-1">Pranajit Das</div>
+                <p className="text-xs text-neutral-300 leading-relaxed font-normal mb-3">
+                  End-to-end innovator and system architect of Mind Care India (Mann Saathi).
+                </p>
+                <div className="flex items-center gap-3 text-xs font-mono">
+                  <a
+                    href="https://github.com/Pranajit01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-300 hover:text-white flex items-center gap-1 bg-white/10 px-2.5 py-1 rounded-lg border border-white/10"
+                  >
+                    <Github className="w-3.5 h-3.5 text-[#ff6b4a]" />
+                    <span>GitHub</span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/pranajitdas"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-300 hover:text-white flex items-center gap-1 bg-white/10 px-2.5 py-1 rounded-lg border border-white/10"
+                  >
+                    <Linkedin className="w-3.5 h-3.5 text-blue-400" />
+                    <span>LinkedIn</span>
+                  </a>
+                  <a
+                    href="mailto:daspranajit973@gmail.com"
+                    className="text-neutral-300 hover:text-white flex items-center gap-1 bg-white/10 px-2.5 py-1 rounded-lg border border-white/10"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Email</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Navigation Links */}
+              <div className="space-y-2 mb-6">
                 <div className="text-[11px] font-mono uppercase tracking-widest text-neutral-400 mb-2">
                   Navigation Shortcuts
                 </div>
@@ -117,7 +162,7 @@ export function Navigation() {
               </div>
 
               {/* Drawer Section 1: How to Visit & Try the AI */}
-              <div className="space-y-4 mb-8">
+              <div className="space-y-4 mb-6">
                 <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#ff6b4a]">
                   <BookOpen className="w-4 h-4" />
                   <span>How to Use & Try AI</span>
@@ -127,35 +172,15 @@ export function Navigation() {
                     <strong className="text-white">1. Start Interactive Session:</strong> Click "Try AI" or navigate to the AI Companion demo.
                   </p>
                   <p>
-                    <strong className="text-white">2. Select Indic Language:</strong> Choose Hindi, Bengali, Tamil, Hinglish, or 8+ supported regional dialects.
+                    <strong className="text-white">2. Select Indic Language:</strong> Choose Hindi, Marathi, Bengali, Tamil, Hinglish, or 8+ regional dialects.
                   </p>
                   <p>
-                    <strong className="text-white">3. Real-Time Crisis Triage:</strong> Messages are continuously evaluated for distress levels with automatic 1-tap emergency helpline connections.
+                    <strong className="text-white">3. Real-Time Crisis Triage:</strong> Automatic 4-tier distress evaluation with 1-tap emergency helpline referral.
                   </p>
                 </div>
               </div>
 
-              {/* Drawer Section 2: Citizen Benefits */}
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-teal-400">
-                  <Heart className="w-4 h-4" />
-                  <span>Key Citizen Benefits</span>
-                </div>
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="glass-card p-3 rounded-xl">
-                    <Shield className="w-4 h-4 text-teal-400 mb-1" />
-                    <div className="font-semibold text-white">100% On-Device</div>
-                    <div className="text-[11px] text-neutral-400">Zero data leakage</div>
-                  </div>
-                  <div className="glass-card p-3 rounded-xl">
-                    <Cpu className="w-4 h-4 text-[#ffb347] mb-1" />
-                    <div className="font-semibold text-white">Sub-100ms</div>
-                    <div className="text-[11px] text-neutral-400">Local INT4 latency</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Drawer Section 3: Tech Architecture & Gemma Integration */}
+              {/* Drawer Section 2: Tech Architecture */}
               <div className="space-y-4 mb-6">
                 <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#ffb347]">
                   <Code2 className="w-4 h-4" />
@@ -163,14 +188,14 @@ export function Navigation() {
                 </div>
                 <div className="glass-card p-4 rounded-xl text-xs text-neutral-300 space-y-2">
                   <p>
-                    Mann Saathi executes Google's compact <strong className="text-white">Gemma Open Model</strong> via INT4 quantization, paired with an IndicBERT safety classifier for sub-50ms distress evaluation.
+                    Executes Google's <strong className="text-white">Gemma Open Model</strong> locally via INT4 quantization for sub-100ms response latency and 100% on-device privacy.
                   </p>
                   <Link
                     href="/blueprint"
                     onClick={() => setDrawerOpen(false)}
                     className="inline-flex items-center gap-1.5 text-xs text-[#ff6b4a] font-semibold hover:underline pt-1"
                   >
-                    <span>Explore Gemma Tech System Blueprint</span>
+                    <span>Explore Gemma Tech System</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -178,7 +203,7 @@ export function Navigation() {
             </div>
 
             {/* Footer inside Drawer */}
-            <div className="pt-6 border-t border-white/10">
+            <div className="pt-4 border-t border-white/10">
               <Link
                 href="/demo"
                 onClick={() => setDrawerOpen(false)}
