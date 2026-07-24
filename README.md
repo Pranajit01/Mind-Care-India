@@ -8,7 +8,7 @@
 
 ---
 
-## 🎯 Executive Summary (Hackathon Edition)
+## 🎯 Executive Summary
 
 Over **197 million people** in India suffer from mental health conditions, yet more than **83% face a critical treatment gap**. The barriers are vast: acute social stigma, prohibitive costs, extreme scarcity of mental health professionals (only 0.75 psychiatrists per 100,000 people), and a severe shortage of regional Indian language support.
 
@@ -99,7 +99,7 @@ Google's **Gemma** model series was selected as the sole foundation for Mind Car
 - Designed for community health workers (ASHA workers, ANMs) to conduct standardized PHQ-9 and GAD-7 screenings in rural areas with voice assistance.
 
 ### 4. 🎨 Interactive Mockup & Prototype Sandbox
-- Integrated sandbox canvas (`@workspace/mockup-sandbox`) allowing developers, clinicians, and hackathon judges to inspect UI components, canvas routes, and workflow previews.
+- Integrated sandbox canvas (`@workspace/mockup-sandbox`) allowing developers, clinicians, and reviewers to inspect UI components, canvas routes, and workflow previews.
 
 ---
 
@@ -177,14 +177,14 @@ Mind-Care-India/
 ├── scripts/                    # Build & workspace automation scripts
 ├── pnpm-workspace.yaml         # Workspace monorepo configuration
 ├── package.json                # Monorepo dependencies & scripts
-└── README.md                   # Hackathon Documentation
+└── README.md                   # Project Documentation
 ```
 
 ---
 
-## 🏆 Hackathon Impact & Scalability Roadmap
+## 🏆 Production Impact & Scalability Roadmap
 
-1. **Phase 1 (Current Prototype)**: High-fidelity web platform powered by Google Gemma with Indic voice/text dialogue, CBT toolkits, and 4-tier crisis escalation.
+1. **Phase 1 (Current Release)**: High-fidelity web platform powered by Google Gemma with Indic voice/text dialogue, CBT toolkits, and 4-tier crisis escalation.
 2. **Phase 2 (District Deployment)**: Integration with Government Tele-MANAS API and state health departments for district-level mental health screening.
 3. **Phase 3 (Offline Mesh Sync)**: Bluetooth P2P sync for offline village clusters, enabling community health workers to sync screening data periodically without active cellular connectivity.
 
@@ -194,4 +194,4 @@ Mind-Care-India/
 
 Distributed under the **Apache 2.0 License**. See `LICENSE` for details.
 
-Developed with ❤️ for the Hackathon using **Google Gemma Open Models**.
+Developed with ❤️ using **Google Gemma Open Models**.

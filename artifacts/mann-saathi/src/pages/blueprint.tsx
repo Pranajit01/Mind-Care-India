@@ -20,7 +20,7 @@ export default function Blueprint() {
     { id: 'security', title: 'Security & Privacy', number: '12' },
     { id: 'business', title: 'Business Model', number: '13' },
     { id: 'roadmap', title: 'Feature Roadmap', number: '14' },
-    { id: 'hackathon', title: 'Hackathon Build Plan', number: '15' },
+    { id: 'buildplan', title: 'Execution & Sprint Plan', number: '15' },
     { id: 'database', title: 'Database Design', number: '16' },
     { id: 'api', title: 'API Design', number: '17' },
     { id: 'risks', title: 'Risks & Mitigations', number: '18' },
@@ -409,19 +409,19 @@ export default function Blueprint() {
               </section>
             ))}
 
-            <section id="hackathon" className="mb-16 scroll-mt-20">
+            <section id="buildplan" className="mb-16 scroll-mt-20">
               <h2 className="text-3xl font-display font-bold text-foreground mb-6">
-                15. Hackathon Build Plan (48 Hours, 6 Members)
+                15. Initial Execution & Sprint Plan
               </h2>
               <div className="space-y-6">
                 {[
-                  { hours: '0-12', tasks: ['Android app shell + Gemma integration (LiteRT)', 'System prompt + safety classifier training', 'PHQ-9 conversational pipeline + risk scoring', 'Web portal (React) + demo interface', 'Hindi language fine-tuning + response templates', 'FastAPI backend + Tele-MANAS mock integration'] },
-                  { hours: '12-24', tasks: ['Integration sprint — connect all components', 'Demo conversation flows for 3 personas', 'Crisis detection testing', 'UI polish + animations'] },
-                  { hours: '24-36', tasks: ['End-to-end testing', 'Load testing (simulated 1000 users)', 'Bug fixes', 'Demo script preparation'] },
-                  { hours: '36-48', tasks: ['Judge demo rehearsal', 'Pitch deck finalization', 'Video recording', 'Documentation'] },
+                  { hours: 'Phase 1', tasks: ['Android app shell + Gemma integration (LiteRT)', 'System prompt + safety classifier training', 'PHQ-9 conversational pipeline + risk scoring', 'Web portal (React) + demo interface', 'Hindi language fine-tuning + response templates', 'FastAPI backend + Tele-MANAS mock integration'] },
+                  { hours: 'Phase 2', tasks: ['Integration sprint — connect all components', 'Demo conversation flows for 3 personas', 'Crisis detection testing', 'UI polish + animations'] },
+                  { hours: 'Phase 3', tasks: ['End-to-end testing', 'Load testing (simulated 1000 users)', 'Bug fixes', 'Demo script preparation'] },
+                  { hours: 'Phase 4', tasks: ['Product demo review', 'Presentation deck finalization', 'Video walkthrough', 'Documentation'] },
                 ].map((phase) => (
                   <div key={phase.hours} className="bg-card border border-card-border rounded-lg p-6">
-                    <h3 className="font-display font-bold text-lg text-foreground mb-3">Hours {phase.hours}</h3>
+                    <h3 className="font-display font-bold text-lg text-foreground mb-3">{phase.hours}</h3>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       {phase.tasks.map((task, i) => (
                         <li key={i}>• {task}</li>
@@ -459,10 +459,10 @@ export default function Blueprint() {
                     { dimension: 'Technical Depth', score: '9/10' },
                     { dimension: 'Clinical Safety', score: '8.5/10' },
                     { dimension: 'Startup Potential', score: '9/10' },
-                    { dimension: 'Hackathon Potential', score: '10/10' },
+                    { dimension: 'Platform Potential', score: '10/10' },
                     { dimension: 'Investor Appeal', score: '8.5/10' },
                     { dimension: 'Scalability', score: '9/10' },
-                    { dimension: 'Google Judge Appeal', score: '10/10' },
+                    { dimension: 'AI Innovation Score', score: '10/10' },
                   ].map((item) => (
                     <div key={item.dimension} className="text-center">
                       <div className="text-2xl font-display font-bold text-primary mb-1">{item.score}</div>

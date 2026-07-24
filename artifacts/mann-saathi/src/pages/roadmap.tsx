@@ -14,7 +14,7 @@ export default function Roadmap() {
   const phases: Phase[] = [
     {
       id: 'mvp',
-      name: 'MVP (Hackathon)',
+      name: 'MVP Launch',
       duration: '0-3 months',
       status: 'current',
       features: [
