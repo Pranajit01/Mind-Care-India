@@ -19,24 +19,24 @@ export function Navigation() {
   return (
     <nav className="sticky top-6 left-1/2 -translate-x-1/2 w-[92%] max-w-4xl z-50 mx-auto rounded-full glass-pill p-2 px-4 sm:px-6 flex items-center justify-between">
       <Link href="/" className="flex items-center gap-2.5 group">
-        <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-cyan-400 flex items-center justify-center p-0.5 shadow-[0_0_15px_rgba(139,92,246,0.6)]">
-          <div className="w-full h-full bg-[#0a0a0a] rounded-full flex items-center justify-center">
-            <Brain className="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform" />
+        <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#0052cc] to-[#FF4500] flex items-center justify-center p-0.5 shadow-[0_0_15px_rgba(0,82,204,0.6)]">
+          <div className="w-full h-full bg-[#050505] rounded-full flex items-center justify-center">
+            <Brain className="w-4 h-4 text-[#FF4500] group-hover:scale-110 transition-transform" />
           </div>
         </div>
-        <span className="font-serif-editorial text-xl text-white tracking-wide">
+        <span className="font-playfair text-xl text-white tracking-tight">
           Mann Saathi
         </span>
       </Link>
 
       {/* Desktop Links */}
-      <div className="hidden lg:flex items-center gap-5 text-xs uppercase tracking-wider font-semibold text-neutral-400">
+      <div className="hidden lg:flex items-center gap-5 text-[10px] font-mono uppercase tracking-[0.4em] text-neutral-400">
         {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}
             className={`transition-colors hover:text-white ${
-              location === link.href ? 'text-purple-400 font-bold' : ''
+              location === link.href ? 'text-[#FF4500] font-bold' : ''
             }`}
           >
             {link.label}
@@ -44,14 +44,11 @@ export function Navigation() {
         ))}
       </div>
 
-      {/* Right Side Action Button */}
+      {/* Right Side Action Button - Void Pill */}
       <div className="hidden sm:flex items-center gap-3">
-        <Link href="/demo" className="relative group inline-flex items-center justify-center p-[1px] rounded-full overflow-hidden">
-          <span className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0%,#8b5cf6_40%,#06b6d4_50%,transparent_60%)] animate-spin-conic group-hover:opacity-100 transition-opacity" />
-          <span className="relative px-4 py-1.5 rounded-full bg-[#0a0a0a] text-xs font-semibold text-white group-hover:bg-purple-950/40 transition-colors flex items-center gap-1.5">
-            Launch AI
-            <ArrowRight className="w-3.5 h-3.5 text-purple-400 group-hover:translate-x-0.5 transition-transform" />
-          </span>
+        <Link href="/demo" className="void-button px-4 py-1.5 text-xs text-white font-semibold flex items-center gap-1.5">
+          <span>Launch AI</span>
+          <ArrowRight className="w-3.5 h-3.5 text-[#FF4500]" />
         </Link>
       </div>
 
@@ -65,15 +62,15 @@ export function Navigation() {
 
       {/* Mobile Dropdown */}
       {mobileOpen && (
-        <div className="absolute top-14 left-0 right-0 glass-card bg-[#0a0a0a]/95 border border-white/10 rounded-2xl p-4 flex flex-col gap-3 shadow-2xl lg:hidden">
+        <div className="absolute top-14 left-0 right-0 glass-card bg-[#050505]/95 border border-white/10 rounded-2xl p-4 flex flex-col gap-3 shadow-2xl lg:hidden">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`px-3 py-2 rounded-lg text-xs font-mono uppercase tracking-widest transition-colors ${
                 location === link.href
-                  ? 'bg-purple-950/40 text-purple-300 border border-purple-500/30'
+                  ? 'bg-[#0052cc]/30 text-[#FF4500] border border-[#FF4500]/40'
                   : 'text-neutral-300 hover:text-white hover:bg-white/5'
               }`}
             >
@@ -83,7 +80,7 @@ export function Navigation() {
           <Link
             href="/demo"
             onClick={() => setMobileOpen(false)}
-            className="mt-2 text-center py-2.5 rounded-xl bg-purple-600 text-white font-semibold text-sm shadow-[0_0_15px_rgba(139,92,246,0.5)]"
+            className="mt-2 text-center py-2.5 rounded-full bg-[#FF4500] text-white font-semibold text-xs font-mono uppercase tracking-widest shadow-[0_0_20px_rgba(255,69,0,0.6)]"
           >
             Launch AI Companion
           </Link>
